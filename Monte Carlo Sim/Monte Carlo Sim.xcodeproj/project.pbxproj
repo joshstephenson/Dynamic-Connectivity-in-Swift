@@ -13,6 +13,9 @@
 		42EF09A826C6ACCA00BC3CDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42EF09A726C6ACCA00BC3CDB /* Preview Assets.xcassets */; };
 		42EF09B426C6ACCA00BC3CDB /* Monte_Carlo_SimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09B326C6ACCA00BC3CDB /* Monte_Carlo_SimTests.swift */; };
 		42EF09BF26C6ACCA00BC3CDB /* Monte_Carlo_SimUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09BE26C6ACCA00BC3CDB /* Monte_Carlo_SimUITests.swift */; };
+		42EF09CD26C6AD7C00BC3CDB /* PercolatingGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09CC26C6AD7C00BC3CDB /* PercolatingGrid.swift */; };
+		42EF09CF26C6ADA400BC3CDB /* QuickUnionFind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09CE26C6ADA400BC3CDB /* QuickUnionFind.swift */; };
+		42EF09D026C6ADA400BC3CDB /* QuickUnionFind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09CE26C6ADA400BC3CDB /* QuickUnionFind.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,8 @@
 		42EF09BA26C6ACCA00BC3CDB /* Monte Carlo SimUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Monte Carlo SimUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EF09BE26C6ACCA00BC3CDB /* Monte_Carlo_SimUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monte_Carlo_SimUITests.swift; sourceTree = "<group>"; };
 		42EF09C026C6ACCA00BC3CDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42EF09CC26C6AD7C00BC3CDB /* PercolatingGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercolatingGrid.swift; sourceTree = "<group>"; };
+		42EF09CE26C6ADA400BC3CDB /* QuickUnionFind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickUnionFind.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +107,8 @@
 				42EF09A926C6ACCA00BC3CDB /* Info.plist */,
 				42EF09AA26C6ACCA00BC3CDB /* Monte_Carlo_Sim.entitlements */,
 				42EF09A626C6ACCA00BC3CDB /* Preview Content */,
+				42EF09CC26C6AD7C00BC3CDB /* PercolatingGrid.swift */,
+				42EF09CE26C6ADA400BC3CDB /* QuickUnionFind.swift */,
 			);
 			path = "Monte Carlo Sim";
 			sourceTree = "<group>";
@@ -261,8 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42EF09CF26C6ADA400BC3CDB /* QuickUnionFind.swift in Sources */,
 				42EF09A326C6ACC800BC3CDB /* ContentView.swift in Sources */,
 				42EF09A126C6ACC800BC3CDB /* Monte_Carlo_SimApp.swift in Sources */,
+				42EF09CD26C6AD7C00BC3CDB /* PercolatingGrid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42EF09D026C6ADA400BC3CDB /* QuickUnionFind.swift in Sources */,
 				42EF09B426C6ACCA00BC3CDB /* Monte_Carlo_SimTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
