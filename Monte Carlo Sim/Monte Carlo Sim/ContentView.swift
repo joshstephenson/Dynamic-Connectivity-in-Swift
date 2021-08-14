@@ -6,47 +6,27 @@
 //
 
 import SwiftUI
-import Combine
 
 class GridModel: ObservableObject {
-    @Published var n: Int = 5
-    @Published var grid: PercolatingGrid
-    internal var rows: [Row]
+    private static var size = 8
+    public static var shared = GridModel(n: size)
+    var grid: PercolatingGrid
+    @Published var percolates: Bool = false
     
     init(n:Int) {
-        self.n = n
-        self.grid = PercolatingGrid(n)
-        var r = [Row]()
-        for _ in 1...n {
-            var cols = [Bool]()
-            for _ in 1...n {
-                cols.append(false)
-            }
-            r.append(Row(cols))
-        }
-//        let rows = [Row([false, false, false, false]),
-//                    Row([false, false, false, false]),
-//                    Row([false, false, false, false]),
-//                    Row([false, false, false, false])
-//                    ]
-        self.rows = r
+        self.grid = PercolatingGrid(GridModel.size)
     }
     
-}
-
-class Row: Identifiable{
-    let id = UUID()
-    var cols:[Bool] = []
-    
-    init(_ c: [Bool]) {
-        cols = c
+    public func reset() {
+        self.grid = PercolatingGrid(GridModel.size)
+        percolates = false
     }
 }
 
 struct SiteView : View {
     var row: Int
     var col: Int
-    @State private var isOpen = false
+    @State var isOpen: Bool
     
     var tap: some Gesture {
         TapGesture(count:1)
@@ -57,43 +37,55 @@ struct SiteView : View {
     
     private func open() {
         isOpen = true
-        Monte_Carlo_SimApp.gridModel.grid.open(row: row, col: col)
-        print(Monte_Carlo_SimApp.gridModel.grid.percolates())
+        GridModel.shared.grid.open(row: row, col: col)
+        GridModel.shared.percolates = GridModel.shared.grid.percolates()
     }
     
     var body: some View {
-        Circle()
+        Rectangle()
             .fill(isOpen ? Color.pink : Color.gray)
             .frame(width:50, height:50, alignment: .leading)
             .gesture(tap)
+            .cornerRadius(5.0)
     }
     
 }
 
 struct PercolationGrid: View {
-    public var n:Int
+    @ObservedObject public var gridModel:GridModel
+    @State private var n:Int
+    
+    init (gridModel: GridModel) {
+        self.gridModel = gridModel
+        self.n = gridModel.grid.size
+    }
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing:2) {
             ForEach(1..<n+1) { i in
-                HStack {
+                HStack(alignment:.center, spacing:2) {
                     ForEach(1..<n+1) { j in
-                        SiteView(row: i, col: j)
+                        SiteView(row: i, col: j, isOpen: gridModel.grid.isOpen(row: i, col: j))
                     }
                 }
             }
         }
-//        List(rows) { row in
-//            ForEach(row.cols, id: \.self) { col in
-//                SiteView(isFull: col)
-//            }
-//        }
     }
 }
 
 
 struct ContentView: View {
+    @ObservedObject var gridModel = GridModel.shared
+    
     var body: some View {
-        PercolationGrid(n:Monte_Carlo_SimApp.gridModel.grid.size)
+        Spacer()
+        HStack {
+            Button("Reset") {
+                GridModel.shared.reset()
+            }
+            Text(gridModel.percolates ? "System percolates." : "System does not percolate").font(.title)
+        }
+        PercolationGrid(gridModel: gridModel)
+        Spacer()
     }
 }
 

@@ -7,12 +7,6 @@
 
 import Foundation
 
-
-enum PercolationError: Error {
-    case invalidRowError
-    case invalidColError
-}
-
 class PercolatingGrid {
     private var sites:[Bool]
     public let size:Int

@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct Monte_Carlo_SimApp: App {
-    public static var gridModel = GridModel(n: 10)
     var body: some Scene {
         WindowGroup {
             ContentView()
