@@ -11,7 +11,7 @@ class PercolatingGrid {
     private var sites:[Bool]
     public let size:Int
     private var uf:QuickUnionFind
-    private var openSitesCount:Int = 0
+    @Published public var openSitesCount:Int = 0
     
     private let virtualTopSite:Int;
     private let virtualBottomSite:Int;
