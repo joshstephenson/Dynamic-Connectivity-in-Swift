@@ -10,8 +10,8 @@ import Foundation
 struct Simulation {
     private var trials: Int
     private var gridSize: Int
-    private var siteCount: Int;
-    private var pstar: Double;
+    private var siteCount: Int
+    private var pstar: Double
     
     init(trials: Int, gridSize: Int, pstar: Double) {
         self.trials = trials

@@ -22,6 +22,10 @@ class PercolatingGrid {
         sites = [Bool](repeating: false, count: n*n+2)
         virtualTopSite = 0
         virtualBottomSite = n*n+1
+//        for i in 1...n {
+//            uf.union(virtualTopSite, and: i)
+//            uf.union(virtualBottomSite, and: (n-1)*n+i)
+//        }
     }
     
     public func open(row:Int, col:Int) {
@@ -92,6 +96,7 @@ class PercolatingGrid {
     public func percolates() -> Bool {
         let vts = uf.find(virtualTopSite)
         let vbs = uf.find(virtualBottomSite)
+        print("vts: \(vts), vbs: \(vbs)")
         return vts == vbs
     }
     
