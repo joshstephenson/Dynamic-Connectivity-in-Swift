@@ -36,8 +36,8 @@ The file `Simulation.swift` runs a monte carlo simulation using the `Percolating
 - pstar: this is the target probability you would like to have reported
 
 ###### As you can see below, the higher the trials, the more narrow the confidence interval
-![Screen Shot 2021-08-14 at 12 04 42 PM](https://user-images.githubusercontent.com/11002/129452335-c638b42a-c551-4892-b616-a8684d835a31.png)
-![Screen Shot 2021-08-14 at 12 04 25 PM](https://user-images.githubusercontent.com/11002/129452342-4c3a4c65-c4cf-4188-89a9-c9b5ee4b890f.png)
+![Screen Shot 2021-08-14 at 12 04 42 PM](https://user-images.githubusercontent.com/11002/129458138-6c32e181-49f2-4061-a611-a0e8d693c958.png)
+![Screen Shot 2021-08-14 at 12 04 25 PM](https://user-images.githubusercontent.com/11002/129458139-6f9c637c-7cfa-4cfa-b39f-bcf47e4588f6.png)
 
 
 ###### Notes
