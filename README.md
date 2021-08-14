@@ -30,6 +30,17 @@ This brings us back to percolation. To determine if a system percolates you simp
 ![Screen Shot 2021-08-13 at 3 44 14 PM](https://user-images.githubusercontent.com/11002/129410819-89db0b73-5aac-48a4-9358-4b97fc2068a8.png)
 
 
+## Monte Carlo Simulation
+The file `Simulation.swift` runs a monte carlo simulation using the `PercolatingGrid.swift` model. The simulator takes three argumenst:
+- trials: this is the number of trials you wish to run. Like any probability, the higher the more precise.
+- gridSize: the size of the percolating grid you wish to run the simulation on
+- pstar: this is the target probability you would like to have reported
+
+###### As you can see below, the higher the trials, the more narrow the confidence interval
+![Screen Shot 2021-08-14 at 12 04 42 PM](https://user-images.githubusercontent.com/11002/129452335-c638b42a-c551-4892-b616-a8684d835a31.png)
+![Screen Shot 2021-08-14 at 12 04 25 PM](https://user-images.githubusercontent.com/11002/129452342-4c3a4c65-c4cf-4188-89a9-c9b5ee4b890f.png)
+
+
 ###### Notes
 
 * This project was inspired by the [percolation project via Princeton's computer science department](https://coursera.cs.princeton.edu/algs4/assignments/percolation/specification.php). If you enjoyed it, or extend it, please let me know.
