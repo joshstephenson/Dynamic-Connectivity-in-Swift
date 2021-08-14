@@ -23,10 +23,10 @@ struct Simulation {
 //    public func run() {
         var results:[Double] = [Double](repeating: 0.0, count: trials)
         
-        for i in 1...trials {
+        for _ in 1...trials {
             let p = PercolatingGrid(gridSize)
             results.append(findPercolationPoint(p: p))
-            print("Trial \(i): \(results.last!)")
+//            print("Trial \(i): \(results.last!)")
         }
         // find the standard deviation
         let expression = NSExpression(forFunction: "stddev:", arguments: [NSExpression(forConstantValue: results)])
@@ -37,7 +37,10 @@ struct Simulation {
             
             let confidenceLo = mean - confidence
             let confidenceHigh = mean + confidence
-            print("Mean: \(mean), StdDev: \(standardDeviation), \(Int(pstar * 100))% Confidence interval: [lo:\(confidenceLo), high:\(confidenceHigh)]")
+            print("    ======================================")
+            print("\tTrials: \(trials), Grid Size: \(gridSize), p*: \(pstar)")
+            print("")
+            print("\tMean: \(String(format: "%.3f", mean))\n\tStandard Deviation: \(String(format: "%.3f", standardDeviation))\n\t\(Int(pstar * 100))% Confidence interval: \(String(format: "%.3f", confidenceLo)) - \(String(format: "%.3f", confidenceHigh))")
         }else {
             print("Error calculating results")
         }
