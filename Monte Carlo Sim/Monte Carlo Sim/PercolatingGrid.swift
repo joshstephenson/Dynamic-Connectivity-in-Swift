@@ -43,8 +43,6 @@ class PercolatingGrid {
                 }
                 
                 connectToAdjascents(site: s)
-            }else {
-                print("invalid")
             }
         }
     }

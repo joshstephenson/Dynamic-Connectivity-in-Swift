@@ -13,5 +13,6 @@ struct Monte_Carlo_SimApp: App {
         WindowGroup {
             ContentView()
         }
+        let p = Simulation(trials: 100, gridSize: 10, pstar: 0.99)
     }
 }

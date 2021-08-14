@@ -46,8 +46,8 @@ struct SiteView : View {
             gridModel.needsReset = false
         }
         isOpen = true
-        GridModel.shared.grid.open(row: row, col: col)
-        GridModel.shared.percolates = GridModel.shared.grid.percolates()
+        gridModel.grid.open(row: row, col: col)
+        gridModel.percolates = GridModel.shared.grid.percolates()
     }
     
     var body: some View {

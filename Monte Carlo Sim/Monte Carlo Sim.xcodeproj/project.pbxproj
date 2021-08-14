@@ -16,6 +16,8 @@
 		42EF09CD26C6AD7C00BC3CDB /* PercolatingGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09CC26C6AD7C00BC3CDB /* PercolatingGrid.swift */; };
 		42EF09CF26C6ADA400BC3CDB /* QuickUnionFind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09CE26C6ADA400BC3CDB /* QuickUnionFind.swift */; };
 		42EF09D026C6ADA400BC3CDB /* QuickUnionFind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09CE26C6ADA400BC3CDB /* QuickUnionFind.swift */; };
+		42EF09D226C814DD00BC3CDB /* Simulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09D126C814DD00BC3CDB /* Simulation.swift */; };
+		42EF09D326C814DD00BC3CDB /* Simulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09D126C814DD00BC3CDB /* Simulation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,7 @@
 		42EF09C026C6ACCA00BC3CDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42EF09CC26C6AD7C00BC3CDB /* PercolatingGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercolatingGrid.swift; sourceTree = "<group>"; };
 		42EF09CE26C6ADA400BC3CDB /* QuickUnionFind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickUnionFind.swift; sourceTree = "<group>"; };
+		42EF09D126C814DD00BC3CDB /* Simulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,7 @@
 				42EF09A626C6ACCA00BC3CDB /* Preview Content */,
 				42EF09CC26C6AD7C00BC3CDB /* PercolatingGrid.swift */,
 				42EF09CE26C6ADA400BC3CDB /* QuickUnionFind.swift */,
+				42EF09D126C814DD00BC3CDB /* Simulation.swift */,
 			);
 			path = "Monte Carlo Sim";
 			sourceTree = "<group>";
@@ -270,6 +274,7 @@
 			files = (
 				42EF09CF26C6ADA400BC3CDB /* QuickUnionFind.swift in Sources */,
 				42EF09A326C6ACC800BC3CDB /* ContentView.swift in Sources */,
+				42EF09D226C814DD00BC3CDB /* Simulation.swift in Sources */,
 				42EF09A126C6ACC800BC3CDB /* Monte_Carlo_SimApp.swift in Sources */,
 				42EF09CD26C6AD7C00BC3CDB /* PercolatingGrid.swift in Sources */,
 			);
@@ -280,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42EF09D026C6ADA400BC3CDB /* QuickUnionFind.swift in Sources */,
+				42EF09D326C814DD00BC3CDB /* Simulation.swift in Sources */,
 				42EF09B426C6ACCA00BC3CDB /* Monte_Carlo_SimTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
