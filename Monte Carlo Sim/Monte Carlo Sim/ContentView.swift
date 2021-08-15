@@ -7,13 +7,12 @@
 
 import SwiftUI
 
-let kGridSize = 4
+let kGridSize = 10
 
 class GridModel: ObservableObject {
     let identifier = UUID()
-    private static var size = kGridSize
     public static var shared = GridModel(n: kGridSize)
-    private var numTrials: Int = 1000
+    private var numTrials: Int = 1
     private var gridSize: Int = kGridSize
     private var pstar: Double = 0.95
     private var sites:[Site]
@@ -21,7 +20,7 @@ class GridModel: ObservableObject {
     @Published var percolates: Bool = false
     
     init(n:Int) {
-        self.grid = PercolatingGrid(GridModel.size)
+        self.grid = PercolatingGrid(kGridSize)
         
         self.sites = []
         for i in 1...kGridSize {
@@ -35,36 +34,42 @@ class GridModel: ObservableObject {
         sites.forEach { site in
             site.close()
         }
-        self.grid = PercolatingGrid(GridModel.size)
+        self.grid = PercolatingGrid(kGridSize)
         percolates = false
     }
     
     // converts row and column to single dimensional index
-    public func siteIndexFor(row:Int, col:Int) -> Site {
+    public func siteFor(row:Int, col:Int) -> Site? {
         var i = col;
         if (row > 1) {
             i += (row-1) * kGridSize;
         }
+        i-=1
         return sites[i];
     }
     
     internal func runTrials() {
         var results:[Double] = [Double](repeating: 0.0, count: numTrials)
-        
+    
         for i in 1...numTrials {
-            let p = PercolatingGrid(gridSize)
-            results.append(findPercolationPoint(p: p))
-            print("Trial \(i): \(results.last!)")
+            self.reset()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                results.append(self.findPercolationPoint())
+                print("Trial \(i): \(results.last)")
+            }
         }
+        
         // find the standard deviation
         let expression = NSExpression(forFunction: "stddev:", arguments: [NSExpression(forConstantValue: results)])
         let expression2 = NSExpression(forFunction: "average:", arguments: [NSExpression(forConstantValue: results)])
+        
         if let standardDeviation = expression.expressionValue(with: nil, context: nil) as? Double, let mean = expression2.expressionValue(with: nil, context: nil) as? Double {
+            
             // find the confidence interval based on the pstar
             let confidence = pstar * standardDeviation / Double(numTrials).squareRoot()
-            
             let confidenceLo = mean - confidence
             let confidenceHigh = mean + confidence
+            
             print("    ======================================")
             print("\tTrials: \(numTrials), Grid Size: \(gridSize), p*: \(pstar)")
             print("")
@@ -74,14 +79,22 @@ class GridModel: ObservableObject {
         }
     }
     
-    private func findPercolationPoint(p:PercolatingGrid) -> Double {
-        while(!p.percolates()){
-            let row = Int.random(in: 1...gridSize)
-            let col = Int.random(in: 1...gridSize)
-            p.open(row: row, col: col)
+    private func findPercolationPoint() -> Double {
+        while(!grid.percolates()){
+            self.openRandomSite()
+//            Thread.sleep(forTimeInterval: 0.01)
         }
-        return Double(p.openSitesCount) / Double(gridSize^2)
+        return Double(grid.openSitesCount) / Double(gridSize^2)
     }
+    
+    private func openRandomSite() {
+        let row = Int.random(in: 1...self.gridSize)
+        let col = Int.random(in: 1...self.gridSize)
+        if let site = self.siteFor(row: row, col: col) {
+            site.open()
+        }
+    }
+    
 }
 
 enum SiteState {
@@ -104,7 +117,7 @@ class Site:ObservableObject {
     }
     
     public func open() {
-        state = .open
+        self.state = .open
         GridModel.shared.grid.open(row: row, col: col)
         GridModel.shared.percolates = GridModel.shared.grid.percolates()
     }
@@ -128,7 +141,7 @@ struct SiteView : View {
     var tap: some Gesture {
         TapGesture(count:1)
             .onEnded { _ in
-                site.open()
+                self.open()
             }
     }
     
@@ -137,7 +150,7 @@ struct SiteView : View {
     }
     
     var body: some View {
-            Circle()
+            Rectangle()
                 .fill(self.color)
                 .frame(width:50, height:50, alignment: .leading)
                 .gesture(tap)
@@ -157,8 +170,10 @@ struct PercolationGrid: View {
         VStack(alignment: .leading, spacing:5) {
             ForEach(1..<n+1) { i in
                 HStack(alignment:.center, spacing:5) {
-                    ForEach(0..<n) { j in
-                        SiteView(site: gridModel.siteIndexFor(row: i, col: j))
+                    ForEach(1..<n+1) { j in
+                        if let site = gridModel.siteFor(row: i, col: j) {
+                            SiteView(site: site)
+                        }
                     }
                 }
             }
@@ -169,7 +184,6 @@ struct PercolationGrid: View {
 
 struct ContentView: View {
     @ObservedObject var gridModel = GridModel.shared
-    
     var body: some View {
         Spacer()
         HStack {

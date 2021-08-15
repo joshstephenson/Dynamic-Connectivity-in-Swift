@@ -22,10 +22,12 @@ class PercolatingGrid {
         sites = [Bool](repeating: false, count: n*n+2)
         virtualTopSite = 0
         virtualBottomSite = n*n+1
-//        for i in 1...n {
-//            uf.union(virtualTopSite, and: i)
-//            uf.union(virtualBottomSite, and: (n-1)*n+i)
-//        }
+        
+        // pre-connect the virtual top site to the top row
+        // and the bottom site to the bottom row
+        for i in 0..<n {
+            uf.union(virtualTopSite, and: i)
+        }
     }
     
     public func open(row:Int, col:Int) {
@@ -35,19 +37,15 @@ class PercolatingGrid {
                 openSitesCount += 1
                 sites[s] = true
                 
-                // if in first row, connect to virtual top site
-                if (row == 1) {
-                    let vts = uf.find(virtualTopSite)
-                    uf.union(s, and: vts)
-                }
-                // if in last row, connect to virtual bottom site
-                if (row == size) {
+                // if in last row, connect to bottom virtual site
+                if row == size {
                     let vbs = uf.find(virtualBottomSite)
                     uf.union(s, and: vbs)
                 }
-                
                 connectToAdjascents(site: s)
             }
+        }else{
+            print("invalid row+col: \(row).\(col)")
         }
     }
     
@@ -96,7 +94,6 @@ class PercolatingGrid {
     public func percolates() -> Bool {
         let vts = uf.find(virtualTopSite)
         let vbs = uf.find(virtualBottomSite)
-        print("vts: \(vts), vbs: \(vbs)")
         return vts == vbs
     }
     

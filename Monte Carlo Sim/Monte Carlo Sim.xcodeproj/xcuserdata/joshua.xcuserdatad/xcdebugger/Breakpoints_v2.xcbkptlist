@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "75C1DD8E-B75B-45AD-8760-00FA9BFC351A"
+            uuid = "45A30589-B07F-4F26-8821-7F02FF31DFA5"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Monte Carlo Sim/PercolatingGrid.swift"
+            filePath = "Monte Carlo Sim/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "open(row:col:)"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "findPercolationPoint()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
