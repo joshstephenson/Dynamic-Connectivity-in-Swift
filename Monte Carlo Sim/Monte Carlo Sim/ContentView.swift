@@ -95,11 +95,20 @@ class GridModel: ObservableObject {
         }
     }
     
+    public func fillSites() {
+        sites.forEach { site in
+            if site.state == .open {
+                site.updatedFull()
+            }
+        }
+    }
+    
 }
 
 enum SiteState {
     case closed
     case open
+    case full
 }
 
 class Site:ObservableObject {
@@ -117,13 +126,20 @@ class Site:ObservableObject {
     }
     
     public func open() {
-        self.state = .open
         GridModel.shared.grid.open(row: row, col: col)
+        self.state = GridModel.shared.grid.isFull(row: row, col: col) ? .full : .open
         GridModel.shared.percolates = GridModel.shared.grid.percolates()
+        GridModel.shared.fillSites()
     }
     
     public func close() {
         state = .closed
+    }
+    
+    public func updatedFull() {
+        if GridModel.shared.grid.isFull(row: row, col: col) {
+            state = .full
+        }
     }
 }
 
@@ -133,8 +149,10 @@ struct SiteView : View {
     private var color:Color {
         switch site.state {
         case .closed:
-            return Color.gray
+            return Color.init(white: 0.3, opacity: 1.0)
         case .open:
+            return Color.white
+        case .full:
             return Color.pink
         }
     }

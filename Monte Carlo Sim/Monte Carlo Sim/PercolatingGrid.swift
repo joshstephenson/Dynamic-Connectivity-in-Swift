@@ -7,11 +7,11 @@
 
 import Foundation
 
-class PercolatingGrid {
+class PercolatingGrid{
     private var sites:[Bool]
     public let size:Int
     private var uf:QuickUnionFind
-    @Published public var openSitesCount:Int = 0
+    public var openSitesCount:Int = 0
     
     private let virtualTopSite:Int;
     private let virtualBottomSite:Int;
