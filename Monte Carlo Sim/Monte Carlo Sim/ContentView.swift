@@ -12,7 +12,7 @@ let kGridSize = 10
 class GridModel: ObservableObject {
     let identifier = UUID()
     public static var shared = GridModel(n: kGridSize)
-    private var numTrials: Int = 1
+    private var numTrials: Int = 10
     private var gridSize: Int = kGridSize
     private var pstar: Double = 0.95
     private var sites:[Site]
@@ -53,10 +53,7 @@ class GridModel: ObservableObject {
     
         for i in 1...numTrials {
             self.reset()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                results.append(self.findPercolationPoint())
-                print("Trial \(i): \(results.last)")
-            }
+            results.append(self.findPercolationPoint())
         }
         
         // find the standard deviation
@@ -69,11 +66,13 @@ class GridModel: ObservableObject {
             let confidence = pstar * standardDeviation / Double(numTrials).squareRoot()
             let confidenceLo = mean - confidence
             let confidenceHigh = mean + confidence
-            
-            print("    ======================================")
-            print("\tTrials: \(numTrials), Grid Size: \(gridSize), p*: \(pstar)")
-            print("")
-            print("\tMean: \(String(format: "%.3f", mean))\n\tStandard Deviation: \(String(format: "%.3f", standardDeviation))\n\t\(Int(pstar * 100))% Confidence interval: \(String(format: "%.3f", confidenceLo)) - \(String(format: "%.3f", confidenceHigh))")
+            let resultString = """
+                
+                \tTrials: \(numTrials), Grid Size: \(gridSize), p*: \(pstar)
+
+                \tMean: \(String(format: "%.3f", mean))\n\tStandard Deviation: \(String(format: "%.3f", standardDeviation))\n\t\(Int(pstar * 100))% Confidence interval: [\(String(format: "%.3f", confidenceLo)), \(String(format: "%.3f", confidenceHigh))]
+                """
+            print(resultString)
         }else {
             print("Error calculating results")
         }
@@ -97,9 +96,7 @@ class GridModel: ObservableObject {
     
     public func fillSites() {
         sites.forEach { site in
-            if site.state == .open {
-                site.updatedFull()
-            }
+            site.updateFull()
         }
     }
     
@@ -136,8 +133,8 @@ class Site:ObservableObject {
         state = .closed
     }
     
-    public func updatedFull() {
-        if GridModel.shared.grid.isFull(row: row, col: col) {
+    public func updateFull() {
+        if state == .open && GridModel.shared.grid.isFull(row: row, col: col) {
             state = .full
         }
     }

@@ -22,12 +22,6 @@ class PercolatingGrid{
         sites = [Bool](repeating: false, count: n*n+2)
         virtualTopSite = 0
         virtualBottomSite = n*n+1
-        
-        // pre-connect the virtual top site to the top row
-        // and the bottom site to the bottom row
-        for i in 0..<n {
-            uf.union(virtualTopSite, and: i)
-        }
     }
     
     public func open(row:Int, col:Int) {
@@ -36,6 +30,12 @@ class PercolatingGrid{
             if !site { // not already open
                 openSitesCount += 1
                 sites[s] = true
+                
+                // if in first row, connect to top virtual site
+                if row == 1 {
+                    let vts = uf.find(virtualTopSite)
+                    uf.union(s, and: vts)
+                }
                 
                 // if in last row, connect to bottom virtual site
                 if row == size {
