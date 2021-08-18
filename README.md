@@ -19,11 +19,11 @@ When you need to determine if an entity is connected to another, we used the `fi
 ### Percolation
 This brings us back to percolation. To determine if a system percolates you simply check all the sites in the top row and see if they are connected to any site in the bottom row. To make this faster and more efficient, this implementation adds a virtual top site. Think of this like a single (not shown) site in row 0 that is connected to all the open sites in row 1. There is a corresponding virtual bottom site. When checking if the system percolates, we simply check if  `find` returns the same entity for the virtual top and bottom sites. (Note: this does lead to a problem known as backwash which is not explained or addressed here).
 
-###### Here a very basic system that does not percolate beceause the flow does not reach the bottom
+###### Here a very basic system that does not percolate because the flow does not reach the bottom
 ![Screen Shot 2021-08-15 at 10 01 03 AM](https://user-images.githubusercontent.com/11002/129481406-a8798aaa-c734-478d-8da9-f74338fcb4b0.png)
 
 
-###### Once the bottom site is opened, then it is said to percolate
+###### Now the bottom site is opened and the system percolates.
 ![Screen Shot 2021-08-15 at 10 01 06 AM](https://user-images.githubusercontent.com/11002/129481417-ae75c24d-d59a-4ef9-b4c8-5d0a3fca0b85.png)
 
 
