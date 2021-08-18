@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let kGridSize = 10
+let kGridSize = 4
 
 class GridModel: ObservableObject {
     let identifier = UUID()
@@ -200,20 +200,20 @@ struct PercolationGrid: View {
 struct ContentView: View {
     @ObservedObject var gridModel = GridModel.shared
     var body: some View {
-        Spacer()
-        HStack {
-            Button("Reset") {
-                GridModel.shared.reset()
+        VStack {
+            HStack {
+                Button("Reset Grid") {
+                    GridModel.shared.reset()
+                }
+                Button("Randomized Trial") {
+                    gridModel.runTrials()
+                }
             }
-            Button("Random Trials") {
-                gridModel.runTrials()
+            HStack {
+                Text(gridModel.percolates ? "System percolates" : "System does not percolate").font(.body)
             }
-        }
-        HStack {
-            Text(gridModel.percolates ? "System percolates" : "System does not percolate").font(.body)
-        }
-        PercolationGrid(gridModel: gridModel)
-        Spacer()
+            PercolationGrid(gridModel: gridModel)
+        }.padding(EdgeInsets(top: 10.0, leading: 10.0, bottom: 10.0, trailing: 10.0))
     }
     
     
