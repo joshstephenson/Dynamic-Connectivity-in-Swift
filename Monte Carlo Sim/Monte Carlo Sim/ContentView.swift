@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-let kGridSize = 4
+let kGridSize = 10
 
 class GridModel: ObservableObject {
     let identifier = UUID()
     public static var shared = GridModel(n: kGridSize)
-    private var numTrials: Int = 10
+    private var numTrials: Int = 100
     private var gridSize: Int = kGridSize
-    private var pstar: Double = 0.95
+    private var pstar: Double = 0.99
     private var sites:[Site]
     var grid: PercolatingGrid
     @Published var percolates: Bool = false
@@ -49,9 +49,9 @@ class GridModel: ObservableObject {
     }
     
     internal func runTrials() {
-        var results:[Double] = [Double](repeating: 0.0, count: numTrials)
+        var results:[Double] = []
     
-        for i in 1...numTrials {
+        for _ in 1...numTrials {
             self.reset()
             results.append(self.findPercolationPoint())
         }
@@ -70,7 +70,7 @@ class GridModel: ObservableObject {
                 
                 \tTrials: \(numTrials), Grid Size: \(gridSize), p*: \(pstar)
 
-                \tMean: \(String(format: "%.3f", mean))\n\tStandard Deviation: \(String(format: "%.3f", standardDeviation))\n\t\(Int(pstar * 100))% Confidence interval: [\(String(format: "%.3f", confidenceLo)), \(String(format: "%.3f", confidenceHigh))]
+                \tMean: \t\t\t\t\t\t\(String(format: "%.3f", mean))\n\tStandard Deviation: \t\t\(String(format: "%.3f", standardDeviation))\n\t\(Int(pstar * 100))% Confidence interval: \t[\(String(format: "%.3f", confidenceLo)), \(String(format: "%.3f", confidenceHigh))]
                 """
             print(resultString)
         }else {
@@ -81,9 +81,9 @@ class GridModel: ObservableObject {
     private func findPercolationPoint() -> Double {
         while(!grid.percolates()){
             self.openRandomSite()
-//            Thread.sleep(forTimeInterval: 0.01)
         }
-        return Double(grid.openSitesCount) / Double(gridSize^2)
+        let percolationPoint = Double(grid.openSitesCount) / Double(gridSize*gridSize)
+        return percolationPoint
     }
     
     private func openRandomSite() {
