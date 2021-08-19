@@ -24,7 +24,7 @@ This brings us back to percolation. To determine if a system percolates we simpl
 ## Monte Carlo Simulation
 Let's say you need to answer the question: How many sites need to be opened before we can be certain a 10-b-10 grid percolates? Like any statistical inquiry, we can only answer that with a given certainty, like 95% certain. Answering a question like this, among randomly chosen events (picking a site to open at random) is a monte carlo simulation.
 
-In this project you can setup a percolating grid of any size and run any number of trials at a given certainty (pstar) where, for each trial, sites will be opened uniformly at random until the system percolates. The simulation will track how many sites were opened which will provide the percolation point or threshold for percolation. Once all trails are over, the percolation threshold will be calculated with respect to the given p-star value.
+In this project you can setup a percolating grid of any size and run any number of trials at a given certainty (confidence coefficient) where, for each trial, sites will be opened uniformly at random until the system percolates. The simulation will track how many sites were opened which will provide the percolation point or threshold for percolation. Once all trails are over, the percolation threshold will be calculated with respect to the given p-star value.
 
 Therefore, we now know that to be 95% certain that a 10-by-10 grid percolates, we would need to open 60 sites (rounding up from 59.4).
 ![Screen Shot 2021-08-19 at 10 08 09 AM](https://user-images.githubusercontent.com/11002/130083323-bfe1a59a-b7f6-45cb-9fae-90ec23a7dc7e.png)
@@ -33,7 +33,7 @@ Therefore, we now know that to be 95% certain that a 10-by-10 grid percolates, w
 The file `Simulation.swift` runs a monte carlo simulation using the `PercolatingGrid.swift` model. The simulator takes three argumenst:
 - trials: this is the number of trials you wish to run. Like any probability, the higher the more precise.
 - gridSize: the size of the percolating grid you wish to run the simulation on
-- pstar: this is the target probability you would like to have reported
+- confidenceCoefficient: this is the confidence coefficient you would like to have reported.
 
 ###### Here are some examples of randomly generated trials in a 10-by-10 grid
 ![Screen Recording 2021-08-15 at 10 04 06 AM](https://user-images.githubusercontent.com/11002/129481504-0e2d0c19-9908-4665-a752-851d32e51e6c.gif)
