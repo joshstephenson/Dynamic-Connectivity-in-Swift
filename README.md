@@ -26,7 +26,9 @@ Let's say you need to answer the question: How many sites need to be opened befo
 
 In this project you can setup a percolating grid of any size and run any number of trials at a given certainty (pstar) where, for each trial, sites will be opened uniformly at random until the system percolates. The simulation will track how many sites were opened which will provide the percolation point or threshold for percolation. Once all trails are over, the percolation threshold will be calculated with respect to the given p-star value.
 
-![Screen Shot 2021-08-19 at 8 48 08 AM](https://user-images.githubusercontent.com/11002/130070866-6399c99b-bf40-4e97-9959-c6db5fb5dbaa.png)
+Therefore, we now know that to be 95% certain that a 10-by-10 grid percolates, we would need to open 60 sites (rounding up from 59.4).
+![Screen Shot 2021-08-19 at 10 08 09 AM](https://user-images.githubusercontent.com/11002/130083323-bfe1a59a-b7f6-45cb-9fae-90ec23a7dc7e.png)
+
 
 The file `Simulation.swift` runs a monte carlo simulation using the `PercolatingGrid.swift` model. The simulator takes three argumenst:
 - trials: this is the number of trials you wish to run. Like any probability, the higher the more precise.
