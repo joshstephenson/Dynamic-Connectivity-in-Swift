@@ -1,9 +1,9 @@
 ## Dynamic Connectivity, Percolation and the Monte Carlo Simulation
-This repository is an exploration of  dynamic connectivity, percolation and the union find data structure, implemented in Swift and SwiftUI.
+This repository is an exploration of dynamic connectivity, modeled after a problem from [Princeton's computer science department](https://coursera.cs.princeton.edu/algs4/assignments/percolation/specification.php) but implemented in Swift and SwiftUI rather than Java.
 
 
-## The Problem
-This project explores the problem of dynamic connectivity which has many applications in science and technology. The basic idea is to keep track of what entities are connected to other entities ignoring degrees of connectivity. In the case of social networking, you only care _that_ Agustin is in the same network as Aaliyah but you don't need to track the degrees of separation from Agustin to Aaliyah. You might be wondering why that's important. Let's look at another example.
+## The Problem - Dynamic Connectivity
+Dynamic connectivity  has many applications in science and technology. The basic idea is to keep track of what entities are connected to other entities ignoring degrees of connectivity. In the case of social networking, you only care _that_ Agustin is in the same network as Aaliyah but you don't need to track the degrees of separation from Agustin to Aaliyah. You might be wondering why that's important. Let's look at another example.
 
 ![basic grid](https://user-images.githubusercontent.com/11002/129968700-d9d4b382-2f10-485f-bded-5eb42db2322d.gif)
 
@@ -16,23 +16,24 @@ As each site is opened we need to check anew, if the system percolates. To deter
 When new connections are made, or in the case of this example project, new sites are opened, we will report these connections to the union-find data structure. This is considered a `union`. When two sites are unioned, what the data structure does is rather simple. If each entity is isolated with no previous connections, then the first will become the parent of the second (think of a simple tree analogy). If each entity does have a parent, then one of the parents becomes a child of the other. In the case of a weighted union find, like this implementation is, the smaller group (by number of total connected entities) becomes a child of the larger one. The crux of this data structure is that _since_ the degrees of separation are not needed, performance can be drastically improved by ignoring the degrees of separation in the data modeling.
 
 ### The Find
-When you need to determine if an entity is connected to another, we used the `find` query which returns the parent. To determine if two entities are connected, we simply `find` each of them and if the parents are equivalent we know they are connected. When all entities in a system are connected, `find` will return the same identifier for every entity in the system (whichever is the greatest grandparent). So in this implementation, the only thing we need to do when a site is opened is check if the neighboring sites (max of 4) are opened, and if so, `union` with the newly opened site.
+When we need to determine if an entity is connected to another, we used the `find` query which returns the parent. To determine if two entities are connected, we simply `find` each of them and if the parents are equivalent we know they are connected. When all entities in a system are connected, `find` will return the same identifier for every entity in the system (whichever is the greatest grandparent). So in this implementation, the only thing we need to do when a site is opened is check if the neighboring sites (max of 4) are opened, and if so, `union` with the newly opened site.
 
 ### Percolation
-This brings us back to percolation. To determine if a system percolates you simply check all the sites in the top row and see if they are connected to any site in the bottom row. To make this faster and more efficient, this implementation adds a virtual top site. Think of this like a single (not shown) site in row 0 that is connected to all the open sites in row 1. There is a corresponding virtual bottom site. When checking if the system percolates, we simply check if  `find` returns the same entity for the virtual top and bottom sites. (Note: this does lead to a problem known as backwash which is not explained or addressed here).
+This brings us back to percolation. To determine if a system percolates we simply check all the sites in the top row and see if they are connected to any site in the bottom row. To make this faster and more efficient, this implementation adds a virtual top site. Think of this like a single (not shown) site in row 0 that is connected to all the open sites in row 1. There is a corresponding virtual bottom site. When checking if the system percolates, we simply check if  `find` returns the same entity for the virtual top and bottom sites. (Note: this does lead to a problem known as backwash which is not explained or addressed here).
 
 ## Monte Carlo Simulation
-![Screen Recording 2021-08-15 at 10 04 06 AM](https://user-images.githubusercontent.com/11002/129481504-0e2d0c19-9908-4665-a752-851d32e51e6c.gif)
+A monte carlo simulation is a simulation that explores predictability of random events. In this project you can setup a percolating grid of any size and run any number of trials at a given certainty (pstar) where for each trial a site to open will be chosen chosen uniformly at random. It will continue to open a site until the grid percolates and it will keep track of how many it took which is referred to as its percolation point or threshold for percolation. Once all trails are over, the percolation threshold will be calculated with respect to the given p-star value.
+
+In other words, if you want to know, wich 95% certainty, what fraction of sites need to be opened to guarantee a system percolates with, running this simulation generate that report as mean, standard deviation and corresponding 95% confidence interval. (See report below.)
+![Screen Shot 2021-08-19 at 8 48 08 AM](https://user-images.githubusercontent.com/11002/130070866-6399c99b-bf40-4e97-9959-c6db5fb5dbaa.png)
 
 The file `Simulation.swift` runs a monte carlo simulation using the `PercolatingGrid.swift` model. The simulator takes three argumenst:
 - trials: this is the number of trials you wish to run. Like any probability, the higher the more precise.
 - gridSize: the size of the percolating grid you wish to run the simulation on
 - pstar: this is the target probability you would like to have reported
 
-###### As you can see below, the higher the trials, the more narrow the confidence interval
-![Screen Shot 2021-08-14 at 12 04 42 PM](https://user-images.githubusercontent.com/11002/129458138-6c32e181-49f2-4061-a611-a0e8d693c958.png)
-![Screen Shot 2021-08-14 at 12 04 25 PM](https://user-images.githubusercontent.com/11002/129458139-6f9c637c-7cfa-4cfa-b39f-bcf47e4588f6.png)
-
+###### Here are some examples of randomly generated trials in a 10-by-10 grid
+![Screen Recording 2021-08-15 at 10 04 06 AM](https://user-images.githubusercontent.com/11002/129481504-0e2d0c19-9908-4665-a752-851d32e51e6c.gif)
 
 ###### Notes
 
