@@ -14,7 +14,7 @@ class GridModel: ObservableObject {
     public static var shared = GridModel(n: kGridSize)
     private var numTrials: Int = 100
     private var gridSize: Int = kGridSize
-    private var pstar: Double = 0.99
+    private var confidenceCoefficient: Double = 0.99
     private var sites:[Site]
     var grid: PercolatingGrid
     @Published var percolates: Bool = false
@@ -63,14 +63,14 @@ class GridModel: ObservableObject {
         if let standardDeviation = expression.expressionValue(with: nil, context: nil) as? Double, let mean = expression2.expressionValue(with: nil, context: nil) as? Double {
             
             // find the confidence interval based on the pstar
-            let confidence = pstar * standardDeviation / Double(numTrials).squareRoot()
+            let confidence = confidenceCoefficient * standardDeviation / Double(numTrials).squareRoot()
             let confidenceLo = mean - confidence
             let confidenceHigh = mean + confidence
             let resultString = """
                 
-                \tTrials: \(numTrials), Grid Size: \(gridSize), p*: \(pstar)
+                \tTrials: \(numTrials), Grid Size: \(gridSize), Confidence Coefficient: \(confidenceCoefficient)
 
-                \tMean: \t\t\t\t\t\t\(String(format: "%.3f", mean))\n\tStandard Deviation: \t\t\(String(format: "%.3f", standardDeviation))\n\t\(Int(pstar * 100))% Confidence interval: \t[\(String(format: "%.3f", confidenceLo)), \(String(format: "%.3f", confidenceHigh))]
+                \tMean: \t\t\t\t\t\t\(String(format: "%.3f", mean))\n\tStandard Deviation: \t\t\(String(format: "%.3f", standardDeviation))\n\t\(Int(confidenceCoefficient * 100))% Confidence interval: \t[\(String(format: "%.3f", confidenceLo)), \(String(format: "%.3f", confidenceHigh))]
                 """
             print(resultString)
         }else {
