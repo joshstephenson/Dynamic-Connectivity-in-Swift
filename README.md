@@ -38,6 +38,3 @@ The file `Simulation.swift` runs a monte carlo simulation using the `Percolating
 ###### Here are some examples of randomly generated trials in a 10-by-10 grid
 ![Screen Recording 2021-08-15 at 10 04 06 AM](https://user-images.githubusercontent.com/11002/129481504-0e2d0c19-9908-4665-a752-851d32e51e6c.gif)
 
-###### Notes
-
-* This project was inspired by the [percolation project via Princeton's computer science department](https://coursera.cs.princeton.edu/algs4/assignments/percolation/specification.php). If you enjoyed it, or extend it, please let me know.
