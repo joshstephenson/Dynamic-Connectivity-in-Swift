@@ -56,6 +56,7 @@ class PercolatingGrid{
     
     public func isFull(row:Int, col:Int) -> Bool {
         let index = siteIndexFor(row: row, col: col)
+        print("row: \(row), col: \(col), index: \(index)")
         let site = uf.find(index)
         let vts = uf.find(virtualTopSite)
         return site == vts
@@ -73,7 +74,7 @@ class PercolatingGrid{
         }
         
         // look for site to the right
-        if (col > 1 && isOpen(row:row, col:col+1)) {
+        if (col < size && isOpen(row:row, col:col+1)) {
             let right = siteIndexFor(row:row, col:col+1)
             uf.union(site, and: right)
         }

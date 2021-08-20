@@ -7,11 +7,14 @@
 
 import SwiftUI
 
+let kGridSize = 10
+
 @main
 struct Monte_Carlo_SimApp: App {
+    @StateObject private var gridModel = GridModel(n: kGridSize)
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(gridModel)
         }
     }
 }
