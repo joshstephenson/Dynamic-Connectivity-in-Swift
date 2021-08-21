@@ -56,7 +56,6 @@ class PercolatingGrid{
     
     public func isFull(row:Int, col:Int) -> Bool {
         let index = siteIndexFor(row: row, col: col)
-        print("row: \(row), col: \(col), index: \(index)")
         let site = uf.find(index)
         let vts = uf.find(virtualTopSite)
         return site == vts

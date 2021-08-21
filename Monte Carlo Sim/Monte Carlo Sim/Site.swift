@@ -7,7 +7,15 @@
 
 import SwiftUI
 
-class Site:ObservableObject {
+class Site:ObservableObject, Hashable {
+    static func == (lhs: Site, rhs: Site) -> Bool {
+        return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
+    }
+    
     var gridModel: GridModel
     let identifier = UUID()
     var row: Int
