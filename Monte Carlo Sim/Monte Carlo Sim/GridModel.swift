@@ -12,6 +12,9 @@ class GridModel: ObservableObject {
     let identifier = UUID()
     private var numTrials: Int = 100
     @Published var gridSize: Int = 10
+    public var siteCount:Int {
+        return gridSize * gridSize
+    }
     private var confidenceCoefficient: Double = 0.99
     private var sites:[Site]
     public var rows:[[Site]] {

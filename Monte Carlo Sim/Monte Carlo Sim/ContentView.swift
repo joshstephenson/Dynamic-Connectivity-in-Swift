@@ -39,7 +39,7 @@ struct GridSizeStepperView: View {
 struct ContentView: View {
     @ObservedObject var gridModel: GridModel
     @EnvironmentObject var simulationConfig: SimulationConfig
-    @State var probability = 0
+    @State var threshold = 0.0
     var simulator = Simulator()
     var body: some View {
         VStack(alignment: .center, spacing: 10.0) {
@@ -48,7 +48,7 @@ struct ContentView: View {
                     GridSizeStepperView(gridModel: gridModel)
                 
                     Button("Reset Grid") {
-                        probability = 0
+                        threshold = 0.0
                         gridModel.reset()
                     }
                 }
@@ -56,13 +56,14 @@ struct ContentView: View {
                     TrialStepperView(config: simulationConfig)
                     ConfidenceStepperView(config: simulationConfig)
                     Button("Run") {
-                        probability = simulator.run(config: simulationConfig, gridModel: gridModel)
+                        threshold = simulator.run(config: simulationConfig, gridModel: gridModel)
                     }
                 }
             }
             HStack {
-                if probability > 0 {
-                    Text("Percolation threshold: \(probability)/\(gridModel.gridSize*gridModel.gridSize) sites")
+                if threshold > 0.0 {
+                    let openSites = Int((threshold * Double(gridModel.siteCount)).rounded(.up))
+                    Text("Percolation threshold: \(openSites)/\(gridModel.siteCount) (\(Int((threshold * 100).rounded(.up)))%)")
                 }else {
                     Text(gridModel.percolates ? "System percolates" : "System does not percolate").font(.body)
                 }

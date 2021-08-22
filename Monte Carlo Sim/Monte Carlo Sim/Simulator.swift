@@ -9,7 +9,7 @@ import Foundation
 
 struct Simulator {
 
-    public func run(config: SimulationConfig, gridModel: GridModel) -> Int {
+    public func run(config: SimulationConfig, gridModel: GridModel) -> Double {
         let numTrials = config.numTrials
         let gridSize = gridModel.gridSize
         let confidence = 1.01 + config.confidenceCoefficient
@@ -40,11 +40,11 @@ struct Simulator {
                 """
             print(resultString)
             
-            return Int(round(mean * Double(gridSize*gridSize)))
+            return mean
         }else {
             print("Error calculating results")
         }
-        return 0
+        return 0.0
     }
     
     private func findPercolationPoint(_ gridModel: GridModel) -> Double {
