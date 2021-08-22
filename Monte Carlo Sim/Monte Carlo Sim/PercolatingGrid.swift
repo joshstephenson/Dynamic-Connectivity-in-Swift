@@ -14,14 +14,12 @@ class PercolatingGrid{
     public var openSitesCount:Int = 0
     
     private let virtualTopSite:Int;
-    private let virtualBottomSite:Int;
     
     init(_ n:Int) {
-        uf = QuickUnionFind(n*n+2)
+        uf = QuickUnionFind(n*n+1)
         size = n
-        sites = [Bool](repeating: false, count: n*n+2)
+        sites = [Bool](repeating: false, count: n*n+1)
         virtualTopSite = 0
-        virtualBottomSite = n*n+1
     }
     
     public func open(row:Int, col:Int) {
@@ -37,11 +35,6 @@ class PercolatingGrid{
                     uf.union(s, and: vts)
                 }
                 
-                // if in last row, connect to bottom virtual site
-                if row == size {
-                    let vbs = uf.find(virtualBottomSite)
-                    uf.union(s, and: vbs)
-                }
                 connectToAdjascents(site: s)
             }
         }else{
@@ -93,8 +86,14 @@ class PercolatingGrid{
     
     public func percolates() -> Bool {
         let vts = uf.find(virtualTopSite)
-        let vbs = uf.find(virtualBottomSite)
-        return vts == vbs
+        let bottomRow = (size-1)*size+1..<size*size+1
+        for i in bottomRow {
+            let site = uf.find(i)
+            if site == vts {
+                return true
+            }
+        }
+        return false
     }
     
     // converts row and column to single dimensional index
