@@ -29,14 +29,14 @@ struct Simulator {
         if let standardDeviation = expression.expressionValue(with: nil, context: nil) as? Double, let mean = expression2.expressionValue(with: nil, context: nil) as? Double {
             
             // find the confidence interval based on the pstar
-            let confidence = confidence * standardDeviation / Double(numTrials).squareRoot()
-            let confidenceLo = mean - confidence
-            let confidenceHigh = mean + confidence
+            let margin = confidence * standardDeviation / Double(numTrials).squareRoot()
+            let confidenceLo = mean - margin
+            let confidenceHigh = mean + margin
             let resultString = """
                 
-                \tTrials: \(numTrials), Grid Size: \(gridSize), Confidence Coefficient: \(confidence)
+                \tTrials: \(results.count), Grid Size: \(gridSize)
 
-                \tMean: \t\t\t\t\t\t\(String(format: "%.3f", mean))\n\tStandard Deviation: \t\t\(String(format: "%.3f", standardDeviation))\n\t\(Int(confidence * 100))% Confidence interval: \t[\(String(format: "%.3f", confidenceLo)), \(String(format: "%.3f", confidenceHigh))]
+                \tMean: \t\t\t\t\t\t\(String(format: "%.3f", mean))\n\tStandard Deviation: \t\t\(String(format: "%.3f", standardDeviation))\n\t\(Int(config.confidenceCoefficient * 100))% Confidence interval: \t[\(String(format: "%.3f", confidenceLo)), \(String(format: "%.3f", confidenceHigh))]
                 """
             print(resultString)
         }else {
@@ -46,6 +46,7 @@ struct Simulator {
     
     private func findPercolationPoint(_ gridModel: GridModel) -> Double {
         let gridSize = gridModel.grid.size
+        
         while(!gridModel.grid.percolates()){
             self.openRandomSite(gridModel)
         }
