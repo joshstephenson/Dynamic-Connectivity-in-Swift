@@ -35,7 +35,6 @@ class Site:ObservableObject, Hashable {
     public func open() {
         gridModel.grid.open(row: row, col: col)
         self.state = gridModel.grid.isFull(row: row, col: col) ? .full : .open
-        print(self.state)
         gridModel.percolates = gridModel.grid.percolates()
         gridModel.fillSites()
     }
