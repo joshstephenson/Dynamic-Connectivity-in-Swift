@@ -40,7 +40,9 @@ struct SiteView : View {
     var body: some View {
             Rectangle()
                 .fill(self.color)
-                .frame(width:50, height:50, alignment: .leading)
+                .frame(width:600.0/CGFloat(gridModel.gridSize)-4,
+                       height:600.0/CGFloat(gridModel.gridSize)-4,
+                       alignment: .leading)
                 .gesture(tap)
     }
     

@@ -32,7 +32,7 @@ struct GridSizeStepperView: View {
     var body: some View {
         Stepper("Grid Size: \(value)", onIncrement: increment, onDecrement: decrement) { changed in
             
-        }
+        }.font(.headline)
     }
 }
 
@@ -42,28 +42,28 @@ struct ContentView: View {
     @EnvironmentObject var simulationConfig: SimulationConfig
     var simulator = Simulator()
     var body: some View {
-        HStack(alignment: .top, spacing: 10.0, content: {
-            VStack(alignment: .center, spacing: 10.0, content: {
-                GridSizeStepperView(gridModel: gridModel)
-                Button("Reset Grid") {
-                    gridModel.reset()
+        VStack(alignment: .center, spacing: 10.0) {
+            HStack(alignment: .top, spacing: 40.0) {
+                VStack (alignment: .leading, spacing: 20.0) {
+                    GridSizeStepperView(gridModel: gridModel)
+                
+                    Button("Reset Grid") {
+                        gridModel.reset()
+                    }
                 }
-            }).frame(minWidth: 200.0, idealWidth: 200.0, maxWidth: nil, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .topLeading)
-            VStack(alignment: .leading, spacing: 10.0, content: {
-                SimulationConfigView()
-                Button("Run") {
-                    simulator.run(config: simulationConfig, gridModel: gridModel)
+                VStack(alignment: .leading, spacing: 10.0) {
+                    TrialStepperView(config: simulationConfig)
+                    ConfidenceStepperView(config: simulationConfig)
+                    Button("Run") {
+                        simulator.run(config: simulationConfig, gridModel: gridModel)
+                    }
                 }
-            })
-        }).padding(EdgeInsets(top: 10.0, leading: 10.0, bottom: 10.0, trailing: 10.0))
-        
-        VStack {
-            
+            }
             HStack {
                 Text(gridModel.percolates ? "System percolates" : "System does not percolate").font(.body)
             }
             PercolationGridView(gridModel: gridModel)
-        }.padding(EdgeInsets(top: 10.0, leading: 10.0, bottom: 10.0, trailing: 10.0))
+        }.padding(EdgeInsets(top: 20.0, leading: 10.0, bottom: 20.0, trailing: 10.0))
     }
 }
 

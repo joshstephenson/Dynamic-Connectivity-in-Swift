@@ -32,8 +32,7 @@ struct TrialStepperView: View {
     
     var body: some View {
         Stepper("Trials: \(value)", onIncrement: increment, onDecrement: decrement) { changed in
-            
-        }
+        }.font(.headline)
     }
 }
 
@@ -63,17 +62,6 @@ struct ConfidenceStepperView: View {
     
     var body: some View {
         Stepper("Confidence Coefficient: \(value)", onIncrement: increment, onDecrement: decrement) { changed in
-            
-        }
-    }
-}
-
-struct SimulationConfigView: View {
-    @EnvironmentObject var simulationConfig: SimulationConfig
-    var body: some View {
-        VStack {
-            TrialStepperView(config: simulationConfig)
-            ConfidenceStepperView(config: simulationConfig)
-        }
+        }.font(.headline)
     }
 }

@@ -15,9 +15,9 @@ struct PercolationGridView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing:5) {   
+        VStack(alignment: .leading, spacing:4) {   
             ForEach(gridModel.rows, id: \.self) { row in
-                HStack(alignment:.center, spacing:5) {
+                HStack(alignment:.center, spacing:4) {
                     ForEach(row, id: \.self) { site in
                         SiteView(site: site, gridModel: gridModel)
                     }
