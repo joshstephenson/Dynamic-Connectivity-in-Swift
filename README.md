@@ -19,15 +19,15 @@ When new connections are made, or in the case of this example project, new sites
 When we need to determine if an entity is connected to another, we used the `find` query which returns the parent. To determine if two entities are connected, we simply `find` each of them and if the parents are equivalent we know they are connected. When all entities in a system are connected, `find` will return the same identifier for every entity in the system (whichever is the greatest grandparent). So in this implementation, the only thing we need to do when a site is opened is check if the neighboring sites (max of 4) are opened, and if so, `union` with the newly opened site.
 
 ### Percolation
-This brings us back to percolation. To determine if a system percolates we simply check all the sites in the top row and see if they are connected to any site in the bottom row. To make this faster and more efficient, this implementation adds a virtual top site. Think of this like a single (not shown) site in row 0 that is connected to all the open sites in row 1. When checking if the system percolates, we simply check if  `find` returns the same entity for the virtual top and bottom sites.
+This brings us back to percolation. To determine if a system percolates we simply check all the sites in the top row and see if they are connected to any site in the bottom row. To make this faster and more efficient, this implementation adds a virtual top site. Think of this like a single (not shown) site in row 0 that is connected to all the open sites in row 1. When checking if the system percolates, we simply check if  `find` returns the same entity for the virtual top and any site in the bottom row.
 
 ## Monte Carlo Simulation
-Let's say you need to answer the question: How many sites need to be opened before we can be certain a 10-b-10 grid percolates? Like any statistical inquiry, we can only answer that with a given certainty, like 95% certain. Answering a question like this, among randomly chosen events (picking a site to open at random) is a monte carlo simulation.
+Let's say you need to answer the question: How many sites need to be opened before we can be certain a 10-by-10 grid percolates? Like any statistical inquiry, we can only answer that with a given certainty, like 95% certain. Answering a question like this, among randomly chosen events (picking a site to open at random) is a monte carlo simulation.
 
 In this project you can setup a percolating grid of any size and run any number of trials at a given certainty (confidence coefficient) where, for each trial, sites will be opened uniformly at random until the system percolates. The simulation will track how many sites were opened which will provide the percolation point or threshold for percolation. Once all trails are over, the percolation threshold will be calculated with respect to the given p-star value.
 
 Therefore, we now know that to be 95% certain that a 10-by-10 grid percolates, we would need to open 60 sites (rounding up from 59.4).
-![Screen Shot 2021-08-19 at 10 08 09 AM](https://user-images.githubusercontent.com/11002/130083323-bfe1a59a-b7f6-45cb-9fae-90ec23a7dc7e.png)
+![Screen Shot 2021-08-22 at 8 52 50 PM](https://user-images.githubusercontent.com/11002/130376329-056420ac-b82c-42eb-a095-fcce85677eed.png)
 
 
 The file `Simulation.swift` runs a monte carlo simulation using the `PercolatingGrid.swift` model. The simulator takes three argumenst:
@@ -36,5 +36,6 @@ The file `Simulation.swift` runs a monte carlo simulation using the `Percolating
 - confidenceCoefficient: this is the confidence coefficient you would like to have reported.
 
 ###### Here are some examples of randomly generated trials in a 10-by-10 grid
-![Screen Recording 2021-08-15 at 10 04 06 AM](https://user-images.githubusercontent.com/11002/129481504-0e2d0c19-9908-4665-a752-851d32e51e6c.gif)
+![sample-trials](https://user-images.githubusercontent.com/11002/130376546-c56979d5-cf13-4455-9f87-051a27a7ad4f.gif)
+
 
