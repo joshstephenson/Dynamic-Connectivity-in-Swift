@@ -13,6 +13,15 @@
 		427F3A3526D02DCA00F629A4 /* PercolationGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3426D02DCA00F629A4 /* PercolationGridView.swift */; };
 		427F3A3726D03BD600F629A4 /* SimulationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3626D03BD600F629A4 /* SimulationConfig.swift */; };
 		427F3A3926D03DBE00F629A4 /* SimulationConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3826D03DBE00F629A4 /* SimulationConfigView.swift */; };
+		42B3837426D3EAD800691563 /* SimulationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3626D03BD600F629A4 /* SimulationConfig.swift */; };
+		42B3837526D3EADC00691563 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09A226C6ACC800BC3CDB /* ContentView.swift */; };
+		42B3837626D3EAE900691563 /* GridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A2E26D02AB400F629A4 /* GridModel.swift */; };
+		42B3837726D3EAEC00691563 /* PercolatingGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09CC26C6AD7C00BC3CDB /* PercolatingGrid.swift */; };
+		42B3837826D3EAF100691563 /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3026D02CA600F629A4 /* Site.swift */; };
+		42B3837926D3EAFF00691563 /* PercolationGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3426D02DCA00F629A4 /* PercolationGridView.swift */; };
+		42B3837A26D3EB0200691563 /* SimulationConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3826D03DBE00F629A4 /* SimulationConfigView.swift */; };
+		42B3837B26D3EB0A00691563 /* SiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3226D02DB500F629A4 /* SiteView.swift */; };
+		42B3837D26D3EB7C00691563 /* PercolatingGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B3837C26D3EB7C00691563 /* PercolatingGridTests.swift */; };
 		42EF09A126C6ACC800BC3CDB /* Monte_Carlo_SimApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09A026C6ACC800BC3CDB /* Monte_Carlo_SimApp.swift */; };
 		42EF09A326C6ACC800BC3CDB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09A226C6ACC800BC3CDB /* ContentView.swift */; };
 		42EF09A526C6ACCA00BC3CDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42EF09A426C6ACCA00BC3CDB /* Assets.xcassets */; };
@@ -50,6 +59,7 @@
 		427F3A3426D02DCA00F629A4 /* PercolationGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercolationGridView.swift; sourceTree = "<group>"; };
 		427F3A3626D03BD600F629A4 /* SimulationConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationConfig.swift; sourceTree = "<group>"; };
 		427F3A3826D03DBE00F629A4 /* SimulationConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationConfigView.swift; sourceTree = "<group>"; };
+		42B3837C26D3EB7C00691563 /* PercolatingGridTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercolatingGridTests.swift; sourceTree = "<group>"; };
 		42EF099D26C6ACC800BC3CDB /* Monte Carlo Sim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Monte Carlo Sim.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EF09A026C6ACC800BC3CDB /* Monte_Carlo_SimApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monte_Carlo_SimApp.swift; sourceTree = "<group>"; };
 		42EF09A226C6ACC800BC3CDB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -146,6 +156,7 @@
 		42EF09B226C6ACCA00BC3CDB /* Monte Carlo SimTests */ = {
 			isa = PBXGroup;
 			children = (
+				42B3837C26D3EB7C00691563 /* PercolatingGridTests.swift */,
 				42EF09B326C6ACCA00BC3CDB /* Monte_Carlo_SimTests.swift */,
 				42EF09B526C6ACCA00BC3CDB /* Info.plist */,
 			);
@@ -308,9 +319,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42B3837426D3EAD800691563 /* SimulationConfig.swift in Sources */,
+				42B3837526D3EADC00691563 /* ContentView.swift in Sources */,
+				42B3837826D3EAF100691563 /* Site.swift in Sources */,
+				42B3837B26D3EB0A00691563 /* SiteView.swift in Sources */,
+				42B3837A26D3EB0200691563 /* SimulationConfigView.swift in Sources */,
+				42B3837926D3EAFF00691563 /* PercolationGridView.swift in Sources */,
+				42B3837D26D3EB7C00691563 /* PercolatingGridTests.swift in Sources */,
 				42EF09D026C6ADA400BC3CDB /* QuickUnionFind.swift in Sources */,
 				42EF09D326C814DD00BC3CDB /* Simulator.swift in Sources */,
+				42B3837726D3EAEC00691563 /* PercolatingGrid.swift in Sources */,
 				42EF09B426C6ACCA00BC3CDB /* Monte_Carlo_SimTests.swift in Sources */,
+				42B3837626D3EAE900691563 /* GridModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
