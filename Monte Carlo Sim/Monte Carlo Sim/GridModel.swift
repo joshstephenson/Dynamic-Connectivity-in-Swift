@@ -56,6 +56,7 @@ class GridModel: ObservableObject {
                 sites.append(site)
             }
         }
+        percolates = false
     }
     
     public func reset() {

@@ -12,6 +12,11 @@ struct GridSizeStepperView: View {
     @State var value = 10
     var min = 3
     var max = 25
+    var didChangeHandler:(() -> Void)
+    init(gridModel: GridModel, _ didChange: @escaping () -> Void) {
+        self.gridModel = gridModel
+        didChangeHandler = didChange
+    }
     
     func increment() {
         if value == max {
@@ -31,7 +36,7 @@ struct GridSizeStepperView: View {
     
     var body: some View {
         Stepper("Grid Size: \(value)", onIncrement: increment, onDecrement: decrement) { changed in
-            
+            didChangeHandler()
         }.font(.headline)
     }
 }
@@ -45,7 +50,9 @@ struct ContentView: View {
         VStack(alignment: .center, spacing: 10.0) {
             HStack(alignment: .top, spacing: 40.0) {
                 VStack (alignment: .leading, spacing: 20.0) {
-                    GridSizeStepperView(gridModel: gridModel)
+                    GridSizeStepperView(gridModel: gridModel) {
+                        self.threshold = 0.0
+                    }
                 
                     Button("Reset Grid") {
                         threshold = 0.0
