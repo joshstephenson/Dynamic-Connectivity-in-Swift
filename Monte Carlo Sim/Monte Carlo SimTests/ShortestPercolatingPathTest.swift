@@ -57,6 +57,28 @@ class ShortestPercolatingPathTest: XCTestCase {
         }
     }
     
+    
+    func testIndirectPercolationPathPicksShortestOverLongest() throws {
+        let gridModel = GridModel(n: 4)
+        let expected:[[Int]] = [[4,4], [3,4], [3,3], [3,2], [3,1], [2,1], [1,1]]
+        openSitesHelper(model: gridModel, sites: [[4,4], [3,4], [2,4], [2,3], [3,3], [3,2], [3,1], [2,1], [1,1]])
+        XCTAssert(gridModel.grid.openSitesCount == 9)
+        XCTAssert(gridModel.grid.percolates())
+        
+        let shortest = ShortestPercolatingPath(gridModel)
+        let path = shortest.path()
+        XCTAssert(path.count == 7)
+        
+        var index = 0
+        shortest.path().forEach { site in
+            let expect = expected[index]
+            XCTAssert(site.row == expect[0])
+            XCTAssert(site.col == expect[1])
+            index += 1
+        }
+    }
+    
+    
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
@@ -65,4 +87,12 @@ class ShortestPercolatingPathTest: XCTestCase {
         }
     }
 
+}
+
+extension ShortestPercolatingPathTest {
+    func openSitesHelper(model: GridModel, sites:[[Int]]) {
+        sites.forEach { site in
+            model.siteFor(row: site[0], col: site[1])!.open()
+        }
+    }
 }
