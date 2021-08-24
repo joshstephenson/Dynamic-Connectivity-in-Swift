@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class Site:ObservableObject, Hashable {
+class Site:ObservableObject, Hashable, CustomStringConvertible {
     static func == (lhs: Site, rhs: Site) -> Bool {
         return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
@@ -21,9 +21,21 @@ class Site:ObservableObject, Hashable {
     var row: Int
     var col: Int
     @Published internal var state:SiteState = .closed
+    public var left:Site?
+    public var right:Site?
+    public var above:Site?
+    public var below:Site?
+    
+    var description: String {
+        return "<Site row: \(row), col: \(col)>"
+    }
     
     public var isOpen:Bool {
         return state != .closed
+    }
+    
+    public var isFull:Bool {
+        return state == .full
     }
     
     init(row: Int, col: Int, gridModel: GridModel) {

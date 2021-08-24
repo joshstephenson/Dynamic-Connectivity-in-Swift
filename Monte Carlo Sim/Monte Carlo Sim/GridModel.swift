@@ -17,19 +17,7 @@ class GridModel: ObservableObject {
     }
     private var confidenceCoefficient: Double = 0.99
     private var sites:[Site]
-    public var rows:[[Site]] {
-        if sites.count == 0 {
-            return []
-        }
-        var r:[[Site]] = []
-        for i in 0..<gridSize {
-            r.append([])
-            for j in 0..<gridSize {
-                r[i].append(siteFor(row: i+1, col: j+1)!)
-            }
-        }
-        return r
-    }
+    public var rows:[[Site]]
     public var grid: PercolatingGrid
     @Published var percolates: Bool = false
     
@@ -37,24 +25,55 @@ class GridModel: ObservableObject {
         self.gridSize = n
         self.grid = PercolatingGrid(n)
         self.sites = []
+        self.rows = [[]]
+        var lastRow:[Site]? = nil
         for i in 1...gridSize {
+            var previousSite:Site? = nil
+            var current:[Site] = []
             for j in 1...gridSize {
                 let site = Site(row: i, col: j, gridModel: self)
+                if let last = lastRow {
+                    site.above = last[j-1]
+                    last[j-1].below = site
+                }
+                if let previous = previousSite {
+                    site.left = previousSite
+                    previous.right = site
+                }
                 sites.append(site)
+                current.append(site)
+                previousSite = site
             }
+            rows.append(current)
+            lastRow = current
         }
     }
     
     public func setSize(n:Int) {
         self.gridSize = n
         self.grid = PercolatingGrid(n)
-        
         self.sites = []
+        self.rows = [[]]
+        var lastRow:[Site]? = nil
         for i in 1...gridSize {
+            var previousSite:Site? = nil
+            var current:[Site] = []
             for j in 1...gridSize {
                 let site = Site(row: i, col: j, gridModel: self)
+                if let last = lastRow {
+                    site.above = last[j-1]
+                    last[j-1].below = site
+                }
+                if let previous = previousSite {
+                    site.left = previousSite
+                    previous.right = site
+                }
                 sites.append(site)
+                current.append(site)
+                previousSite = site
             }
+            rows.append(current)
+            lastRow = current
         }
         percolates = false
     }
