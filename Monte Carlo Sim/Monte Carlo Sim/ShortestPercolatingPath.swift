@@ -110,7 +110,8 @@ class ShortestPercolatingPath {
             newPath.append(next)
             return findNext(hopCount: hopCount+1, path: newPath)
         }else if path.last!.row > 1{ // dead end without path to top
-            
+            newPath.removeLast()
+            return findNext(hopCount: hopCount+1, path: newPath)
         }
         
         return path
