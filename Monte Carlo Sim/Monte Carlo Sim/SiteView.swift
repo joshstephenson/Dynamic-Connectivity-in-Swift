@@ -11,6 +11,7 @@ enum SiteState {
     case closed
     case open
     case full
+    case shortestPath
 }
 
 struct SiteView : View {
@@ -24,6 +25,8 @@ struct SiteView : View {
             return Color.white
         case .full:
             return Color.pink
+        case .shortestPath:
+            return Color.blue
         }
     }
     var tap: some Gesture {

@@ -3,4 +3,54 @@
    uuid = "C85CACA4-A52E-4E39-9A32-F39709CC7A3A"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5C1D11C9-0B01-4DC0-942D-9CE53C0E8E20"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Monte Carlo Sim/ShortestPercolatingPath.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "findSolution()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5C1D11C9-0B01-4DC0-942D-9CE53C0E8E20 - 67d6ff9cde49b32f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Monte_Carlo_Sim.ShortestPercolatingPath.findSolution() -&gt; Swift.Array&lt;Monte_Carlo_Sim.Site&gt;"
+                  moduleName = "Monte Carlo Sim"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joshua/Projects/Classes/Algorithms/Swift/Monte-Carlo-Simulation/Monte%20Carlo%20Sim/Monte%20Carlo%20Sim/ShortestPercolatingPath.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "610">
+               </Location>
+               <Location
+                  uuid = "5C1D11C9-0B01-4DC0-942D-9CE53C0E8E20 - 6c43d78373e9881f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Monte_Carlo_Sim.Site) -&gt; () in Monte_Carlo_Sim.ShortestPercolatingPath.findSolution() -&gt; Swift.Array&lt;Monte_Carlo_Sim.Site&gt;"
+                  moduleName = "Monte Carlo Sim"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joshua/Projects/Classes/Algorithms/Swift/Monte-Carlo-Simulation/Monte%20Carlo%20Sim/Monte%20Carlo%20Sim/ShortestPercolatingPath.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "169">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

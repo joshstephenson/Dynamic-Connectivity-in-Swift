@@ -53,6 +53,7 @@ struct Simulator {
         while(!gridModel.grid.percolates()){
             self.openRandomSite(gridModel)
         }
+        gridModel.percolates = true
         let percolationPoint = Double(gridModel.grid.openSitesCount) / Double(gridSize*gridSize)
         return percolationPoint
     }

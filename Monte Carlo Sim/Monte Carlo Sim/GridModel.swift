@@ -16,44 +16,27 @@ class GridModel: ObservableObject {
         return gridSize * gridSize
     }
     private var confidenceCoefficient: Double = 0.99
-    private var sites:[Site]
     public var rows:[[Site]]
     public var grid: PercolatingGrid
-    @Published var percolates: Bool = false
+    @Published var percolates: Bool = false {
+        didSet {
+            if percolates {
+                findShortestPath()
+            }
+        }
+    }
     
     init(n:Int) {
         self.gridSize = n
         self.grid = PercolatingGrid(n)
-        self.sites = []
         self.rows = [[]]
-        var lastRow:[Site]? = nil
-        for i in 1...gridSize {
-            var previousSite:Site? = nil
-            var current:[Site] = []
-            for j in 1...gridSize {
-                let site = Site(row: i, col: j, gridModel: self)
-                if let last = lastRow {
-                    site.above = last[j-1]
-                    last[j-1].below = site
-                }
-                if let previous = previousSite {
-                    site.left = previousSite
-                    previous.right = site
-                }
-                sites.append(site)
-                current.append(site)
-                previousSite = site
-            }
-            rows.append(current)
-            lastRow = current
-        }
+        setSize(n: n)
     }
     
     public func setSize(n:Int) {
         self.gridSize = n
         self.grid = PercolatingGrid(n)
-        self.sites = []
-        self.rows = [[]]
+        self.rows = Array(repeating: [], count: gridSize)
         var lastRow:[Site]? = nil
         for i in 1...gridSize {
             var previousSite:Site? = nil
@@ -68,37 +51,36 @@ class GridModel: ObservableObject {
                     site.left = previousSite
                     previous.right = site
                 }
-                sites.append(site)
                 current.append(site)
                 previousSite = site
             }
-            rows.append(current)
+            rows[i-1] = current
             lastRow = current
         }
         percolates = false
     }
     
     public func reset() {
-        sites.forEach { site in
-            site.close()
-        }
-        self.grid = PercolatingGrid(gridSize)
-        percolates = false
+        setSize(n: gridSize)
     }
     
     // converts row and column to single dimensional index
     public func siteFor(row:Int, col:Int) -> Site? {
-        var i = col;
-        if (row > 1) {
-            i += (row-1) * gridSize;
-        }
-        i -= 1
-        return sites[i];
+        return rows[row-1][col-1]
     }
     
     public func fillSites() {
-        sites.forEach { site in
-            site.updateFull()
+        rows.forEach { row in
+            row.forEach { site in
+                site.updateFull()
+            }
+        }
+    }
+    
+    private func findShortestPath() {
+        let path = ShortestPercolatingPath(self).path()
+        path.forEach { site in
+            site.state = .shortestPath
         }
     }
     

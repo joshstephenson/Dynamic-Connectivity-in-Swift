@@ -53,9 +53,7 @@ class ShortestPercolatingPath {
         }
         var best:[Site] = []
         var bestCount = Int.max
-        let bottom = gridModel.siteFor(row: gridModel.gridSize, col: 1)
-        
-        // find path from here to 0,0
+        print(gridModel.rows.count)
         gridModel.rows.last!.forEach { bottom in
             if bottom.isFull {
                 let path:[Site] = findNext(hopCount: 1, path: [bottom])
@@ -78,13 +76,31 @@ class ShortestPercolatingPath {
         var count = 4
         // check as many as 4 adjascent sites to see if a: they haven't been marked and
         // b: they are full
-        while newSite == nil && count > 0 {
+        print(current)
+        while count > 0 {
             if let site = adjascentByIndex(site: current, index: count) {
                 let index = siteIndexFor(site)
+//                print("---\(site), marked \(marked[index]), isfull: \(site.isFull)")
                 if !marked[index] {
-                    marked[index] = true
                     if site.isFull {
-                        newSite = site
+                        if newSite == nil {
+                            newSite = site
+                            marked[index] = true
+                        }
+                    }
+                }
+                // prune sites if they didn't get us closer to this site
+                if marked[index] && path.contains(site){
+                    if let i = path.lastIndex(of: site) {
+//                        let dupe = path[i]
+//                        print("---adjascent: \(dupe), index \(i) vs \(path.count)")
+                        if i < newPath.count-2 {
+                            while newPath.count > i+1 {
+                                print("pruning \(newPath.last)")
+                                newPath.removeLast()
+                            }
+                            newPath.append(current)
+                        }
                     }
                 }
             }
@@ -92,10 +108,11 @@ class ShortestPercolatingPath {
         }
         if let next = newSite {
             newPath.append(next)
-        }
-        if newPath.count > path.count {
             return findNext(hopCount: hopCount+1, path: newPath)
+        }else if path.last!.row > 1{ // dead end without path to top
+            
         }
+        
         return path
     }
     
@@ -113,7 +130,7 @@ class ShortestPercolatingPath {
     }
     
     private func siteIndexFor(_ site:Site) -> Int {
-        var i = site.col;
+        var i = site.col-1;
         if (site.row > 1) {
             i += (site.row-1) * grid.size;
         }

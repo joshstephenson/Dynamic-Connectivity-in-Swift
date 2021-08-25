@@ -63,8 +63,7 @@ struct ContentView: View {
                     TrialStepperView(config: simulationConfig)
                     ConfidenceStepperView(config: simulationConfig)
                     Button("Run") {
-//                        threshold = simulator.run(config: simulationConfig, gridModel: gridModel)
-                        print(ShortestPercolatingPath(gridModel).path())
+                        threshold = simulator.run(config: simulationConfig, gridModel: gridModel)
                     }
                 }
             }

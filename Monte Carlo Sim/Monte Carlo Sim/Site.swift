@@ -35,7 +35,7 @@ class Site:ObservableObject, Hashable, CustomStringConvertible {
     }
     
     public var isFull:Bool {
-        return state == .full
+        return state == .full || state == .shortestPath
     }
     
     init(row: Int, col: Int, gridModel: GridModel) {
