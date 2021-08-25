@@ -31,8 +31,8 @@ class PercolatingGrid{
                 
                 // if in first row, connect to top virtual site
                 if row == 1 {
-                    let vts = uf.find(virtualTopSite)
-                    uf.union(s, and: vts)
+//                    let vts = uf.find(virtualTopSite)
+                    uf.union(s, and: 0)
                 }
                 
                 connectToAdjascents(site: s)

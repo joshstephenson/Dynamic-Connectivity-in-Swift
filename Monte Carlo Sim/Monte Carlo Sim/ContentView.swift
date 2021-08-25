@@ -49,7 +49,7 @@ struct ContentView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 10.0) {
             HStack(alignment: .top, spacing: 40.0) {
-                VStack (alignment: .leading, spacing: 20.0) {
+                VStack (alignment: .leading, spacing: 10.0) {
                     GridSizeStepperView(gridModel: gridModel) {
                         self.threshold = 0.0
                     }

@@ -27,7 +27,7 @@ class Site:ObservableObject, Hashable, CustomStringConvertible {
     public var below:Site?
     
     var description: String {
-        return "<Site row: \(row), col: \(col)>"
+        return "<Site row: \(row), col: \(col), state: \(state)>"
     }
     
     public var isOpen:Bool {
@@ -47,8 +47,10 @@ class Site:ObservableObject, Hashable, CustomStringConvertible {
     public func open() {
         gridModel.grid.open(row: row, col: col)
         self.state = gridModel.grid.isFull(row: row, col: col) ? .full : .open
-        gridModel.percolates = gridModel.grid.percolates()
+        
+        // Must call fillSites before checking percolation for Depth First Search
         gridModel.fillSites()
+        gridModel.percolates = gridModel.grid.percolates()
     }
     
     public func close() {
