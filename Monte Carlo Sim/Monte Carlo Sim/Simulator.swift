@@ -10,7 +10,7 @@ import Foundation
 struct Simulator {
 
     public func run(config: SimulationConfig, gridModel: GridModel) -> Double {
-        let numTrials = 1//config.numTrials
+        let numTrials = config.numTrials
         let gridSize = gridModel.gridSize
         let confidence = 1.01 + config.confidenceCoefficient
         let gridModel = gridModel

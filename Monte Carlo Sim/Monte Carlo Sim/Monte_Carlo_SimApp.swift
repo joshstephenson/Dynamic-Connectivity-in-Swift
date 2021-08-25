@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let kGridSize = 4
+let kGridSize = 10
 
 @main
 struct Monte_Carlo_SimApp: App {
