@@ -18,6 +18,7 @@ class GridModel: ObservableObject {
     private var confidenceCoefficient: Double = 0.99
     public var rows:[[Site]]
     public var grid: PercolatingGrid
+    private var shortestPath:[Site] = []
     @Published var percolates: Bool = false {
         didSet {
             if percolates {
@@ -79,9 +80,15 @@ class GridModel: ObservableObject {
     
     private func findShortestPath() {
         let path = ShortestPercolatingPath(self).path()
+        
+        // reset any older shortest path
+        shortestPath.forEach { site in
+            site.state = .full
+        }
         path.forEach { site in
             site.state = .shortestPath
         }
+        self.shortestPath = path
     }
     
 }

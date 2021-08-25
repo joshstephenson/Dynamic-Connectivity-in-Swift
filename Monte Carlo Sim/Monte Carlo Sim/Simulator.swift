@@ -10,7 +10,7 @@ import Foundation
 struct Simulator {
 
     public func run(config: SimulationConfig, gridModel: GridModel) -> Double {
-        let numTrials = config.numTrials
+        let numTrials = 1//config.numTrials
         let gridSize = gridModel.gridSize
         let confidence = 1.01 + config.confidenceCoefficient
         let gridModel = gridModel
@@ -38,7 +38,7 @@ struct Simulator {
 
                 \tMean: \t\t\t\t\t\t\(String(format: "%.3f", mean))\n\tStandard Deviation: \t\t\(String(format: "%.3f", standardDeviation))\n\t\(Int(config.confidenceCoefficient * 100))% Confidence interval: \t[\(String(format: "%.3f", confidenceLo)), \(String(format: "%.3f", confidenceHigh))]
                 """
-            print(resultString)
+//            print(resultString)
             
             return mean
         }else {

@@ -27,6 +27,7 @@
 		42B3838226D3ECB700691563 /* ShortestPercolatingPathTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B3838126D3ECB700691563 /* ShortestPercolatingPathTest.swift */; };
 		42B3838426D3F43E00691563 /* PathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B3838326D3F43E00691563 /* PathTests.swift */; };
 		42B3838626D4897500691563 /* SiteTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B3838526D4897500691563 /* SiteTest.swift */; };
+		42B8D5EF26D6D8400031DFB7 /* DepthFirstSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B8D5EE26D6D8400031DFB7 /* DepthFirstSearch.swift */; };
 		42EF09A126C6ACC800BC3CDB /* Monte_Carlo_SimApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09A026C6ACC800BC3CDB /* Monte_Carlo_SimApp.swift */; };
 		42EF09A326C6ACC800BC3CDB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09A226C6ACC800BC3CDB /* ContentView.swift */; };
 		42EF09A526C6ACCA00BC3CDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42EF09A426C6ACCA00BC3CDB /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		42B3838126D3ECB700691563 /* ShortestPercolatingPathTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortestPercolatingPathTest.swift; sourceTree = "<group>"; };
 		42B3838326D3F43E00691563 /* PathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTests.swift; sourceTree = "<group>"; };
 		42B3838526D4897500691563 /* SiteTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteTest.swift; sourceTree = "<group>"; };
+		42B8D5EE26D6D8400031DFB7 /* DepthFirstSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthFirstSearch.swift; sourceTree = "<group>"; };
 		42EF099D26C6ACC800BC3CDB /* Monte Carlo Sim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Monte Carlo Sim.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EF09A026C6ACC800BC3CDB /* Monte_Carlo_SimApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monte_Carlo_SimApp.swift; sourceTree = "<group>"; };
 		42EF09A226C6ACC800BC3CDB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				427F3A3226D02DB500F629A4 /* SiteView.swift */,
 				42EF09D126C814DD00BC3CDB /* Simulator.swift */,
 				42B3837E26D3EC9500691563 /* ShortestPercolatingPath.swift */,
+				42B8D5EE26D6D8400031DFB7 /* DepthFirstSearch.swift */,
 				42EF09A426C6ACCA00BC3CDB /* Assets.xcassets */,
 				42EF09A926C6ACCA00BC3CDB /* Info.plist */,
 				42EF09AA26C6ACCA00BC3CDB /* Monte_Carlo_Sim.entitlements */,
@@ -314,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42B8D5EF26D6D8400031DFB7 /* DepthFirstSearch.swift in Sources */,
 				427F3A3126D02CA600F629A4 /* Site.swift in Sources */,
 				427F3A3926D03DBE00F629A4 /* SimulationConfigView.swift in Sources */,
 				427F3A3326D02DB500F629A4 /* SiteView.swift in Sources */,
