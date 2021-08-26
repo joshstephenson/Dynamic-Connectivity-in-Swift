@@ -20,13 +20,13 @@ struct SiteView : View {
     private var color:Color {
         switch site.state {
         case .closed:
-            return Color.init(white: 0.5, opacity: 1.0)
+            return Color.init("closed")
         case .open:
-            return Color.white
+            return Color.init("open")
         case .full:
-            return Color.pink
+            return Color.init("full")
         case .shortestPath:
-            return Color.blue
+            return Color.init("shortestPath")
         }
     }
     var tap: some Gesture {
@@ -43,8 +43,8 @@ struct SiteView : View {
     var body: some View {
             Rectangle()
                 .fill(self.color)
-                .frame(width:600.0/CGFloat(gridModel.gridSize)-4,
-                       height:600.0/CGFloat(gridModel.gridSize)-4,
+                .frame(width:600.0/CGFloat(gridModel.gridSize)-2,
+                       height:600.0/CGFloat(gridModel.gridSize)-2,
                        alignment: .leading)
                 .gesture(tap)
     }

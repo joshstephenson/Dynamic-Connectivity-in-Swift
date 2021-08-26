@@ -25,14 +25,26 @@ class DepthFirstSearch {
         }
         let current = path.last!
         var best:[Site] = []
+        var newPath = path
 
         // We can check as many as three adjascent sites
         // and need to follow all options
         fullAdjascentSites(site: current).forEach({ adjascent in
             let index = siteIndexFor(adjascent)
+            if marked[index] && path.contains(adjascent) {
+                if let i = path.lastIndex(of: adjascent) {
+                    if i < newPath.count - 2 {
+                        while newPath.count > i+1 {
+                            print("pruning \(newPath.last)")
+                            newPath.removeLast()
+                        }
+                        newPath.append(current)
+                    }
+                }
+            }
             if !marked[index] {
                 marked[index] = true
-                let updated = run(path.appending(adjascent))
+                let updated = run(newPath.appending(adjascent))
                 best = shorterCompletePath(best: best, updated: updated)
             }
         })
