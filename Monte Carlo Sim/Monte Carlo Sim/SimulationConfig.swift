@@ -8,6 +8,6 @@
 import Foundation
 
 class SimulationConfig: ObservableObject{
-    @Published var numTrials: Int = 10
+    @Published var numTrials: Int = 1
     @Published var confidenceCoefficient = 0.95
 }

@@ -78,9 +78,9 @@ class ShortestPercolatingPathTest: XCTestCase {
         }
     }
     
-    func testInwardSpiralPathGetsLost() throws {
+    func testInwardSpiralPathDoesNotGetLost() throws {
         let gridModel = GridModel(n: 4)
-        let expected:[[Int]] = [[4,3], [3,3], [2,3], [2,4], [2,1]]
+        let expected:[[Int]] = [[4,3], [3,3], [2,3], [2,4], [1,4]]
         openSitesHelper(model: gridModel, sites: [[4,3], [3,3], [2,3], [2,2], [2,1], [3,1], [3,2], [2,4], [1,4]])
         XCTAssert(gridModel.grid.openSitesCount == 9)
         XCTAssert(gridModel.grid.percolates())
@@ -90,7 +90,7 @@ class ShortestPercolatingPathTest: XCTestCase {
         XCTAssert(path.count == 5)
         
         var index = 0
-        shortest.path().forEach { site in
+        path.forEach { site in
             let expect = expected[index]
             XCTAssert(site.row == expect[0])
             XCTAssert(site.col == expect[1])

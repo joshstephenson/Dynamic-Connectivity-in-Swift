@@ -26,14 +26,14 @@ class ShortestPercolatingPath {
             return []
         }
         var best:[Site] = []
-        // start a depthfirstsearch towards the top from each full site on the bottom
-        gridModel.rows.last!.forEach { site in
-            if site.isFull {
+        // start a depth first search towards the top from each full site on the bottom
+        gridModel.rows.last?.forEach { site in
+            if grid.isFull(row: site.row, col: site.col) {
                 let dfs = DepthFirstSearch(gridModel)
                 let path = dfs.run([site])
                 
                 // make sure the search reaches the top
-                if path.last!.row == 1 {
+                if path.last?.row == 1 {
                     if best.count == 0 || path.count < best.count {
                         best = path
                     }

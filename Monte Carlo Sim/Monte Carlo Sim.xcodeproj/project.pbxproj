@@ -13,6 +13,7 @@
 		427F3A3526D02DCA00F629A4 /* PercolationGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3426D02DCA00F629A4 /* PercolationGridView.swift */; };
 		427F3A3726D03BD600F629A4 /* SimulationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3626D03BD600F629A4 /* SimulationConfig.swift */; };
 		427F3A3926D03DBE00F629A4 /* SimulationConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3826D03DBE00F629A4 /* SimulationConfigView.swift */; };
+		42B3763426D6EA3E00C9F183 /* DepthFirstSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B8D5EE26D6D8400031DFB7 /* DepthFirstSearch.swift */; };
 		42B3837426D3EAD800691563 /* SimulationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3626D03BD600F629A4 /* SimulationConfig.swift */; };
 		42B3837526D3EADC00691563 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09A226C6ACC800BC3CDB /* ContentView.swift */; };
 		42B3837626D3EAE900691563 /* GridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A2E26D02AB400F629A4 /* GridModel.swift */; };
@@ -350,6 +351,7 @@
 				42EF09D326C814DD00BC3CDB /* Simulator.swift in Sources */,
 				42B3837726D3EAEC00691563 /* PercolatingGrid.swift in Sources */,
 				42B3838026D3EC9500691563 /* ShortestPercolatingPath.swift in Sources */,
+				42B3763426D6EA3E00C9F183 /* DepthFirstSearch.swift in Sources */,
 				42EF09B426C6ACCA00BC3CDB /* Monte_Carlo_SimTests.swift in Sources */,
 				42B3838626D4897500691563 /* SiteTest.swift in Sources */,
 				42B3837626D3EAE900691563 /* GridModel.swift in Sources */,

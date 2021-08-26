@@ -20,77 +20,51 @@ class DepthFirstSearch {
     }
     
     public func run(_ path:[Site]) -> [Site] {
-        if path.last!.row == 1 { // once we reached the top row, we're done
+        if path.last?.row == 1 { // once we reached the top row, we're done
             return path
         }
         let current = path.last!
+        var best:[Site] = []
+
+        // We can check as many as three adjascent sites
+        // and need to follow all options
+        fullAdjascentSites(site: current).forEach({ adjascent in
+            let index = siteIndexFor(adjascent)
+            if !marked[index] {
+                marked[index] = true
+                let updated = run(path.appending(adjascent))
+                best = shorterCompletePath(best: best, updated: updated)
+            }
+        })
         
-        var newPath = path
-        var newSite:Site?
-        var count = 4
-        // check 4 adjascent sites to see if
-        //   a: they haven't been marked and
-        //   b: they are full
-        while count > 0 {
-            if let site = adjascentByIndex(site: current, index: count) {
-                let index = siteIndexFor(site)
-                if !marked[index] {
-                    if site.isFull {
-                        if newSite == nil {
-                            newSite = site
-                            marked[index] = true
-                        }
-                    }
-                }
-                // prune sites if they didn't get us closer to this site
-                if marked[index] && path.contains(site){
-                    if let i = path.lastIndex(of: site) {
-                        if i < newPath.count-2 {
-                            while newPath.count > i+1 {
-                                newPath.removeLast()
-                            }
-                            newPath.append(current)
-                        }
-                    }
-                }
-            }
-            count -= 1
-        }
-        if let next = newSite {
-            newPath.append(next)
-            return run(newPath)
-            
-        // If we reach a dead end before the top, back out of this one by one up the call chain
-        }else if path.last!.row > 1{
-            newPath.removeLast()
-            if newPath.count > 0 {
-                return run(newPath)
-            }
-        }
-        return path
+        return best
     }
     
-    // Don't return left/right sites for bottom row
-    // those are already accounted for by loop over bottom row from ShortestPercolatingPath
-    private func adjascentByIndex(site: Site, index: Int) -> Site? {
-        switch index {
-        case 4:
-            return site.above
-        case 3:
-            if site.row == gridModel.gridSize {
-                return nil
+    private func shorterCompletePath(best: [Site], updated: [Site]) -> [Site] {
+        if updated.last?.row == 1 {
+            if best.count == 0 || updated.count < best.count {
+                return updated
             }
-            return site.left
-        case 2:
-            if site.row == gridModel.gridSize {
-                return nil
+        }
+        return best
+    }
+    
+    private func fullAdjascentSites(site: Site) -> [Site] {
+        // optimization to avoid checking cells right/left of
+        if site.row == gridModel.gridSize { // last row
+            if let above = site.above {
+                return [above]
+            }else {
+                return []
             }
-            return site.right
-        default:
-            if site.row == gridModel.gridSize {
-                return nil
+        }
+        return [site.above, site.left, site.right, site.below].compactMap { site in
+            if let site = site {
+                if site.isFull {
+                    return site
+                }
             }
-            return site.below
+            return nil
         }
     }
     
@@ -100,5 +74,13 @@ class DepthFirstSearch {
             i += (site.row-1) * grid.size;
         }
         return i;
+    }
+}
+
+extension Array where Element: Any {
+    func appending(_ other: Element) -> Array<Element> {
+        var arr:Array<Element> = self
+        arr.append(other)
+        return arr
     }
 }
