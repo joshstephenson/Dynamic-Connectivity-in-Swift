@@ -19,6 +19,7 @@ class GridModel: ObservableObject {
     public var rows:[[Site]]
     public var grid: PercolatingGrid
     private var shortestPath:[Site] = []
+    @Published var showShortestPath = false
     @Published var percolates: Bool = false {
         didSet {
             if percolates {

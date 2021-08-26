@@ -18,15 +18,24 @@ struct SiteView : View {
     @ObservedObject var site: Site
     @ObservedObject var gridModel: GridModel
     private var color:Color {
-        switch site.state {
-        case .closed:
-            return Color.init("closed")
-        case .open:
-            return Color.init("open")
-        case .full:
-            return Color.init("full")
-        case .shortestPath:
-            return Color.init("shortestPath")
+        if gridModel.showShortestPath {
+            switch site.state {
+            case .closed:
+                return Color.init("closed")
+            case .shortestPath:
+                return Color.init("shortestPath")
+            default:
+                return Color.init("open")
+            }
+        }else {
+            switch site.state {
+            case .closed:
+                return Color.init("closed")
+            case .open:
+                return Color.init("open")
+            default:
+                return Color.init("full")
+            }
         }
     }
     var tap: some Gesture {

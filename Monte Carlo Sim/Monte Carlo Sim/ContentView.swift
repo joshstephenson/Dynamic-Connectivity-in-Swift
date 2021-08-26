@@ -37,7 +37,7 @@ struct GridSizeStepperView: View {
     var body: some View {
         Stepper("Grid Size: \(value)", onIncrement: increment, onDecrement: decrement) { changed in
             didChangeHandler()
-        }.font(.headline)
+        }
     }
 }
 
@@ -47,34 +47,36 @@ struct ContentView: View {
     @State var threshold = 0.0
     var simulator = Simulator()
     var body: some View {
-        VStack(alignment: .center, spacing: 10.0) {
-            HStack(alignment: .top, spacing: 40.0) {
-                VStack (alignment: .leading, spacing: 10.0) {
+        VStack(alignment: .leading, spacing: 10.0) {
+            HStack(alignment: .top, spacing: 177.0, content: {
+                HStack(alignment: .top, spacing: 10.0) {
                     GridSizeStepperView(gridModel: gridModel) {
                         self.threshold = 0.0
                     }
-                
-                    Button("Reset Grid") {
+                    Toggle("Highlight shortest path", isOn: $gridModel.showShortestPath)
+                }
+                HStack(alignment: .top, spacing: 20.0) {
+                    Button("Reset") {
                         threshold = 0.0
                         gridModel.reset()
                     }
-                }
-                VStack(alignment: .leading, spacing: 10.0) {
-//                    TrialStepperView(config: simulationConfig)
-//                    ConfidenceStepperView(config: simulationConfig)
-                    Button("Random") {
+
+                    Button("Randomize") {
                         threshold = simulator.run(config: simulationConfig, gridModel: gridModel)
                     }
                 }
-            }
-            HStack {
-                if threshold > 0.0 {
-                    let openSites = Int((threshold * Double(gridModel.siteCount)).rounded(.up))
-                    Text("Percolation threshold: \(openSites)/\(gridModel.siteCount) (\(Int((threshold * 100).rounded(.up)))%)")
-                }else {
-                    Text(gridModel.percolates ? "System percolates" : "System does not percolate").font(.body)
-                }
-            }
+            })
+            
+            VStack(alignment: .center, spacing: nil) {
+                
+                    if threshold > 0.0 {
+                        let openSites = Int((threshold * Double(gridModel.siteCount)).rounded(.up))
+                        Text("Percolation threshold: \(openSites)/\(gridModel.siteCount) (\(Int((threshold * 100).rounded(.up)))%)")
+                    }else {
+                        Text(gridModel.percolates ? "System percolates" : "System does not percolate").font(.body)
+                    }
+                
+            }.frame(width: 600, height: 10, alignment: .center)
             PercolationGridView(gridModel: gridModel)
         }.padding(EdgeInsets(top: 20.0, leading: 10.0, bottom: 20.0, trailing: 10.0))
     }
