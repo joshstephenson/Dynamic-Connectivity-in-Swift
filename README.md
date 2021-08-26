@@ -15,7 +15,7 @@ Answering these two questions requires very different ways of thinking about the
 ![basic-grid](https://user-images.githubusercontent.com/11002/130969112-afd5f622-f483-460d-a278-eab00e13bd38.gif)
 
 ## Part 1: Percolation
-The grid above is a simplified system for this problem. Each square represents a site. Closed sites are black and the system begins with all sites closed. Once a site is opened (with a simple click) it turns light gray unless it is connected to the top row, then it is considered full and turns blue. It's full because if you were to poor fluid in from the top it would reach all sites directly connected to the top. Any opened site that is not connected to the top, remains gray. A system is said to **percolate** when there is any full site on the bottom row. This means that fluid or current can travel all the way from the top to bottom.
+The grid above is a simplified system for this problem. Each square represents a site. Closed sites are black and the system begins with all sites closed. Once a site is opened (with a simple click) it turns light gray unless it is connected to the top row, then it is considered full and turns blue.  It's full because if you were to poor fluid in from the top it would reach all sites directly connected to the top. Any opened site that is not connected to the top, remains gray. A system is said to **percolate** when there is any full site on the bottom row. This means that fluid or current can travel all the way from the top to bottom. (Green sites are part of the shortest path. See section 2 below.)
 
 As each site is opened we need to check anew, if the system percolates. To determine this is fairly easy if we were to use a brute force algorithm that loops over every site in the grid, but with a larger grid, it would get very costly very quickly. With each increase in grid size the performance degrades quadratically. This is where the [Union Find](https://en.wikipedia.org/wiki/Disjoint-set_data_structure) data structure comes in handy. If we are careful and clever about the way we make changes to the data when each site is opened, then the check for connectivity is remarkably superior.
 
@@ -37,6 +37,6 @@ There are two main types of searching in a system like this. You can focus on br
 You could answer the problem of percolation with a depth first search, but it would be a very inefficient way to simply answer the question of whether or not the system percolates. In this project, I've implemented the union-find data structure/agorithm until the system percolates and once it does, it leverages a depth first search to find the shortest path. Shortest paths are highlighted in green.
 
 ### Here are some examples of randomly generated layouts in a 15-by-15 grid
-![sample-trials](https://user-images.githubusercontent.com/11002/130969152-e2a90221-29d3-4d8b-86fd-23db3a2ff62a.gif)
+![sample-trials](https://user-images.githubusercontent.com/11002/130976104-d72b2722-76b9-4819-a7ed-68571c0aaee0.gif)
 
 
