@@ -1,14 +1,21 @@
-## Dynamic Connectivity, Percolation and the Monte Carlo Simulation
-This repository is an exploration of dynamic connectivity, modeled after a problem from [Princeton's computer science department](https://coursera.cs.princeton.edu/algs4/assignments/percolation/specification.php) but implemented in Swift and SwiftUI rather than Java.
+# Dynamic Connectivity, Percolation, Depth First Search and Shortest Paths
+This repository is an exploration of dynamic connectivity, extended from a problem from [Princeton's computer science department](https://coursera.cs.princeton.edu/algs4/assignments/percolation/specification.php). It is implemented in Swift and SwiftUI.
 
 
 ## The Problem - Dynamic Connectivity
-Dynamic connectivity  has many applications in science and technology. The basic idea is to keep track of what entities are connected to other entities ignoring degrees of connectivity. In the case of social networking, you only care _that_ Agustin is in the same network as Aaliyah but you don't need to track the degrees of separation from Agustin to Aaliyah. You might be wondering why that's important. Let's look at another example.
+Dynamic connectivity has many applications in science and technology. One example is a porous substance that allows liquid to percolate through it. Another is an electrical circuit that allows an electrical current to flow. The basic idea in this experiment is to keep track of how individual sites are connected to each other and whether or not they are part of a continuous network connected to the top.
 
-![basic grid](https://user-images.githubusercontent.com/11002/129968700-d9d4b382-2f10-485f-bded-5eb42db2322d.gif)
+From there we can ask two separate questions:
 
+1. Is there any route from the top that allows liquid/current to reach the bottom?
+2. What is the shortest route from the top that allows liquid/current to reach the bottom?
 
-Think of a grid like one above which is a simplification of a system that allows fluid to flow through a porous substance or electricity to flow through a circuit. Closed sites (squares) are gray and the system begins with all sites closed. Once a site is opened it turns white unless it is connected to the top row, then it is considered full and turns pink. It's full because if you were to poor fluid in from the top it would reach all sites directly connected to the top. Any opened site that is not connected to the top, remains white. A system is said to **percolate** when there is any full site on the bottom row. This means that fluid or current can travel all the way from the top to bottom.
+Answering these two questions requires different ways of thinking about the problem. Each will leverage distinct data structures and employ different algorithms to solve.
+
+![basic-grid](https://user-images.githubusercontent.com/11002/130983602-494849b5-8bff-44f9-aae1-61f6020c7363.gif)
+
+## Part 1: Percolation
+The grid above is a simplified system for this problem. Each square represents a site. Closed sites are black and the system begins with all sites closed. Once a site is opened (with a simple click) it turns light gray unless it is connected to the top row, then it is considered full and turns blue.  It's full because if you were to poor fluid in from the top it would reach all sites directly connected to the top. Any opened site that is not connected to the top, remains gray. A system is said to **percolate** when there is any full site on the bottom row. This means that fluid or current can travel all the way from the top to bottom.
 
 As each site is opened we need to check anew, if the system percolates. To determine this is fairly easy if we were to use a brute force algorithm that loops over every site in the grid, but with a larger grid, it would get very costly very quickly. With each increase in grid size the performance degrades quadratically. This is where the [Union Find](https://en.wikipedia.org/wiki/Disjoint-set_data_structure) data structure comes in handy. If we are careful and clever about the way we make changes to the data when each site is opened, then the check for connectivity is remarkably superior.
 
@@ -21,21 +28,20 @@ When we need to determine if an entity is connected to another, we used the `fin
 ### Percolation
 This brings us back to percolation. To determine if a system percolates we simply check all the sites in the top row and see if they are connected to any site in the bottom row. To make this faster and more efficient, this implementation adds a virtual top site. Think of this like a single (not shown) site in row 0 that is connected to all the open sites in row 1. When checking if the system percolates, we simply check if  `find` returns the same entity for the virtual top and any site in the bottom row.
 
-## Monte Carlo Simulation
-Let's say you need to answer the question: How many sites need to be opened before we can be certain a 10-by-10 grid percolates? Like any statistical inquiry, we can only answer that with a given certainty, like 95% certain. Answering a question like this, among randomly chosen events (picking a site to open at random) is a monte carlo simulation.
-
-In this project you can setup a percolating grid of any size and run any number of trials at a given certainty (confidence coefficient) where, for each trial, sites will be opened uniformly at random until the system percolates. The simulation will track how many sites were opened which will provide the percolation point or threshold for percolation. Once all trails are over, the percolation threshold will be calculated with respect to the given p-star value.
-
-Therefore, we now know that to be 95% certain that a 10-by-10 grid percolates, we would need to open 60 sites (rounding up from 59.4).
-![Screen Shot 2021-08-22 at 8 52 50 PM](https://user-images.githubusercontent.com/11002/130376329-056420ac-b82c-42eb-a095-fcce85677eed.png)
+Here are some examples of randomly generated percolating systems and their corresponding full sites:
+![sample-trials2](https://user-images.githubusercontent.com/11002/130983976-efee39a9-66d6-4236-a7fc-387223289ac2.gif)
 
 
-The file `Simulation.swift` runs a monte carlo simulation using the `PercolatingGrid.swift` model. The simulator takes three argumenst:
-- trials: this is the number of trials you wish to run. Like any probability, the higher the more precise.
-- gridSize: the size of the percolating grid you wish to run the simulation on
-- confidenceCoefficient: this is the confidence coefficient you would like to have reported.
+## Part 2: Shortest Path
+Now let's consider the second question: What is the shortest path from any top site to any bottom site? Answering this question is quite a bit more demanding than percolation. We can't just ignore degrees of separation now, we have to track each possible path from all open sites. In this implementation, we start at the bottom and work up to the top, but there's no reason you couldn't do the inverse.
 
-###### Here are some examples of randomly generated trials in a 10-by-10 grid
-![sample-trials](https://user-images.githubusercontent.com/11002/130376546-c56979d5-cf13-4455-9f87-051a27a7ad4f.gif)
+### Depth First Search
+There are two main types of searching in a system like this. You can focus on breadth first or depth first. To focus on breadth first means that for each site with multiple branches (up, down, left & right) you would search each of those adjascent sites before searching their adjascent sites. A depth first search is the opposite and usually favors one direction. In this case, we favor upward movement above lateral or backward movement. If we reach the end of a route and haven't reached the top we backtrack until we get back to a branch and we then try another branch.
+
+You could answer the problem of percolation with a depth first search, but it would be a very inefficient way to simply answer the question of whether or not the system percolates. In this project, I've implemented the union-find data structure/agorithm until the system percolates and once it does, it leverages a depth first search to find the shortest path. Shortest paths are highlighted in green.
+
+Here are some examples of randomly generated percolating systems and their corresponding shortest paths:
+![sample-trials](https://user-images.githubusercontent.com/11002/130983801-0e0e443b-87f5-4a70-90a0-3162f0b268ec.gif)
+
 
 
