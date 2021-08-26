@@ -60,9 +60,9 @@ struct ContentView: View {
                     }
                 }
                 VStack(alignment: .leading, spacing: 10.0) {
-                    TrialStepperView(config: simulationConfig)
+//                    TrialStepperView(config: simulationConfig)
 //                    ConfidenceStepperView(config: simulationConfig)
-                    Button("Run") {
+                    Button("Random") {
                         threshold = simulator.run(config: simulationConfig, gridModel: gridModel)
                     }
                 }
