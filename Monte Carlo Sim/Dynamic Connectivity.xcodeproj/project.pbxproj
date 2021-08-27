@@ -72,17 +72,17 @@
 		42B3838326D3F43E00691563 /* PathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTests.swift; sourceTree = "<group>"; };
 		42B3838526D4897500691563 /* SiteTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteTest.swift; sourceTree = "<group>"; };
 		42B8D5EE26D6D8400031DFB7 /* DepthFirstSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthFirstSearch.swift; sourceTree = "<group>"; };
-		42EF099D26C6ACC800BC3CDB /* Monte Carlo Sim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Monte Carlo Sim.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		42EF099D26C6ACC800BC3CDB /* Dynamic Connectivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dynamic Connectivity.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EF09A026C6ACC800BC3CDB /* Monte_Carlo_SimApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monte_Carlo_SimApp.swift; sourceTree = "<group>"; };
 		42EF09A226C6ACC800BC3CDB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		42EF09A426C6ACCA00BC3CDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42EF09A726C6ACCA00BC3CDB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		42EF09A926C6ACCA00BC3CDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42EF09AA26C6ACCA00BC3CDB /* Monte_Carlo_Sim.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Monte_Carlo_Sim.entitlements; sourceTree = "<group>"; };
-		42EF09AF26C6ACCA00BC3CDB /* Monte Carlo SimTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Monte Carlo SimTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		42EF09AF26C6ACCA00BC3CDB /* Dynamic ConnectivityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dynamic ConnectivityTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EF09B326C6ACCA00BC3CDB /* Monte_Carlo_SimTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monte_Carlo_SimTests.swift; sourceTree = "<group>"; };
 		42EF09B526C6ACCA00BC3CDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		42EF09BA26C6ACCA00BC3CDB /* Monte Carlo SimUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Monte Carlo SimUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		42EF09BA26C6ACCA00BC3CDB /* Dynamic ConnectivityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dynamic ConnectivityUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EF09BE26C6ACCA00BC3CDB /* Monte_Carlo_SimUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monte_Carlo_SimUITests.swift; sourceTree = "<group>"; };
 		42EF09C026C6ACCA00BC3CDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42EF09CC26C6AD7C00BC3CDB /* PercolatingGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercolatingGrid.swift; sourceTree = "<group>"; };
@@ -128,9 +128,9 @@
 		42EF099E26C6ACC800BC3CDB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				42EF099D26C6ACC800BC3CDB /* Monte Carlo Sim.app */,
-				42EF09AF26C6ACCA00BC3CDB /* Monte Carlo SimTests.xctest */,
-				42EF09BA26C6ACCA00BC3CDB /* Monte Carlo SimUITests.xctest */,
+				42EF099D26C6ACC800BC3CDB /* Dynamic Connectivity.app */,
+				42EF09AF26C6ACCA00BC3CDB /* Dynamic ConnectivityTests.xctest */,
+				42EF09BA26C6ACCA00BC3CDB /* Dynamic ConnectivityUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,9 +192,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		42EF099C26C6ACC800BC3CDB /* Monte Carlo Sim */ = {
+		42EF099C26C6ACC800BC3CDB /* Dynamic Connectivity */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 42EF09C326C6ACCA00BC3CDB /* Build configuration list for PBXNativeTarget "Monte Carlo Sim" */;
+			buildConfigurationList = 42EF09C326C6ACCA00BC3CDB /* Build configuration list for PBXNativeTarget "Dynamic Connectivity" */;
 			buildPhases = (
 				42EF099926C6ACC800BC3CDB /* Sources */,
 				42EF099A26C6ACC800BC3CDB /* Frameworks */,
@@ -204,14 +204,14 @@
 			);
 			dependencies = (
 			);
-			name = "Monte Carlo Sim";
+			name = "Dynamic Connectivity";
 			productName = "Monte Carlo Sim";
-			productReference = 42EF099D26C6ACC800BC3CDB /* Monte Carlo Sim.app */;
+			productReference = 42EF099D26C6ACC800BC3CDB /* Dynamic Connectivity.app */;
 			productType = "com.apple.product-type.application";
 		};
-		42EF09AE26C6ACCA00BC3CDB /* Monte Carlo SimTests */ = {
+		42EF09AE26C6ACCA00BC3CDB /* Dynamic ConnectivityTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 42EF09C626C6ACCA00BC3CDB /* Build configuration list for PBXNativeTarget "Monte Carlo SimTests" */;
+			buildConfigurationList = 42EF09C626C6ACCA00BC3CDB /* Build configuration list for PBXNativeTarget "Dynamic ConnectivityTests" */;
 			buildPhases = (
 				42EF09AB26C6ACCA00BC3CDB /* Sources */,
 				42EF09AC26C6ACCA00BC3CDB /* Frameworks */,
@@ -222,14 +222,14 @@
 			dependencies = (
 				42EF09B126C6ACCA00BC3CDB /* PBXTargetDependency */,
 			);
-			name = "Monte Carlo SimTests";
+			name = "Dynamic ConnectivityTests";
 			productName = "Monte Carlo SimTests";
-			productReference = 42EF09AF26C6ACCA00BC3CDB /* Monte Carlo SimTests.xctest */;
+			productReference = 42EF09AF26C6ACCA00BC3CDB /* Dynamic ConnectivityTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		42EF09B926C6ACCA00BC3CDB /* Monte Carlo SimUITests */ = {
+		42EF09B926C6ACCA00BC3CDB /* Dynamic ConnectivityUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 42EF09C926C6ACCA00BC3CDB /* Build configuration list for PBXNativeTarget "Monte Carlo SimUITests" */;
+			buildConfigurationList = 42EF09C926C6ACCA00BC3CDB /* Build configuration list for PBXNativeTarget "Dynamic ConnectivityUITests" */;
 			buildPhases = (
 				42EF09B626C6ACCA00BC3CDB /* Sources */,
 				42EF09B726C6ACCA00BC3CDB /* Frameworks */,
@@ -240,9 +240,9 @@
 			dependencies = (
 				42EF09BC26C6ACCA00BC3CDB /* PBXTargetDependency */,
 			);
-			name = "Monte Carlo SimUITests";
+			name = "Dynamic ConnectivityUITests";
 			productName = "Monte Carlo SimUITests";
-			productReference = 42EF09BA26C6ACCA00BC3CDB /* Monte Carlo SimUITests.xctest */;
+			productReference = 42EF09BA26C6ACCA00BC3CDB /* Dynamic ConnectivityUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -267,7 +267,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 42EF099826C6ACC800BC3CDB /* Build configuration list for PBXProject "Monte Carlo Sim" */;
+			buildConfigurationList = 42EF099826C6ACC800BC3CDB /* Build configuration list for PBXProject "Dynamic Connectivity" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -280,9 +280,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				42EF099C26C6ACC800BC3CDB /* Monte Carlo Sim */,
-				42EF09AE26C6ACCA00BC3CDB /* Monte Carlo SimTests */,
-				42EF09B926C6ACCA00BC3CDB /* Monte Carlo SimUITests */,
+				42EF099C26C6ACC800BC3CDB /* Dynamic Connectivity */,
+				42EF09AE26C6ACCA00BC3CDB /* Dynamic ConnectivityTests */,
+				42EF09B926C6ACCA00BC3CDB /* Dynamic ConnectivityUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -371,12 +371,12 @@
 /* Begin PBXTargetDependency section */
 		42EF09B126C6ACCA00BC3CDB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 42EF099C26C6ACC800BC3CDB /* Monte Carlo Sim */;
+			target = 42EF099C26C6ACC800BC3CDB /* Dynamic Connectivity */;
 			targetProxy = 42EF09B026C6ACCA00BC3CDB /* PBXContainerItemProxy */;
 		};
 		42EF09BC26C6ACCA00BC3CDB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 42EF099C26C6ACC800BC3CDB /* Monte Carlo Sim */;
+			target = 42EF099C26C6ACC800BC3CDB /* Dynamic Connectivity */;
 			targetProxy = 42EF09BB26C6ACCA00BC3CDB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -563,7 +563,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brightmediums.Monte-Carlo-SimTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Monte Carlo Sim.app/Contents/MacOS/Monte Carlo Sim";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dynamic Connectivity.app/Contents/MacOS/Dynamic Connectivity";
 			};
 			name = Debug;
 		};
@@ -585,7 +585,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.brightmediums.Monte-Carlo-SimTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Monte Carlo Sim.app/Contents/MacOS/Monte Carlo Sim";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dynamic Connectivity.app/Contents/MacOS/Dynamic Connectivity";
 			};
 			name = Release;
 		};
@@ -632,7 +632,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		42EF099826C6ACC800BC3CDB /* Build configuration list for PBXProject "Monte Carlo Sim" */ = {
+		42EF099826C6ACC800BC3CDB /* Build configuration list for PBXProject "Dynamic Connectivity" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				42EF09C126C6ACCA00BC3CDB /* Debug */,
@@ -641,7 +641,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		42EF09C326C6ACCA00BC3CDB /* Build configuration list for PBXNativeTarget "Monte Carlo Sim" */ = {
+		42EF09C326C6ACCA00BC3CDB /* Build configuration list for PBXNativeTarget "Dynamic Connectivity" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				42EF09C426C6ACCA00BC3CDB /* Debug */,
@@ -650,7 +650,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		42EF09C626C6ACCA00BC3CDB /* Build configuration list for PBXNativeTarget "Monte Carlo SimTests" */ = {
+		42EF09C626C6ACCA00BC3CDB /* Build configuration list for PBXNativeTarget "Dynamic ConnectivityTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				42EF09C726C6ACCA00BC3CDB /* Debug */,
@@ -659,7 +659,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		42EF09C926C6ACCA00BC3CDB /* Build configuration list for PBXNativeTarget "Monte Carlo SimUITests" */ = {
+		42EF09C926C6ACCA00BC3CDB /* Build configuration list for PBXNativeTarget "Dynamic ConnectivityUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				42EF09CA26C6ACCA00BC3CDB /* Debug */,
