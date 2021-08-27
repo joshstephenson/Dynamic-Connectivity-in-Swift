@@ -70,12 +70,12 @@ class ShortestPercolatingPathTest: XCTestCase {
         XCTAssert(path.count == expected.count)
         
         var index = 0
-//        shortest.path().forEach { site in
-//            let expect = expected[index]
-//            XCTAssert(site.row == expect[0])
-//            XCTAssert(site.col == expect[1])
-//            index += 1
-//        }
+        shortest.path().forEach { site in
+            let expect = expected[index]
+            XCTAssert(site.row == expect[0])
+            XCTAssert(site.col == expect[1])
+            index += 1
+        }
     }
     
     func testInwardSpiralPathDoesNotGetLost() throws {

@@ -32,6 +32,12 @@ class DepthFirstSearch {
         fullAdjascentSites(site: current).forEach({ adjascent in
             let index = siteIndexFor(adjascent)
             
+            
+            if !marked[index] {
+                marked[index] = true
+                let updated = run(newPath.appending(adjascent))
+                best = shorterCompletePath(best: best, updated: updated)
+            }
             // if we've found a site already in our path, we've gone in some sort of loop
             // and can prune some sites
             if marked[index] && path.contains(adjascent) {
@@ -44,11 +50,6 @@ class DepthFirstSearch {
                         newPath.append(current) // add current back
                     }
                 }
-            }
-            if !marked[index] {
-                marked[index] = true
-                let updated = run(newPath.appending(adjascent))
-                best = shorterCompletePath(best: best, updated: updated)
             }
         })
         toPrune.forEach { site in
