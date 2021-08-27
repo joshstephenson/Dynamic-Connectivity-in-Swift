@@ -12,7 +12,7 @@ From there we can ask two separate questions:
 
 Answering these two questions requires different ways of thinking about the problem. Each will leverage distinct data structures and employ different algorithms to solve.
 
-![basic-grid](https://user-images.githubusercontent.com/11002/130983602-494849b5-8bff-44f9-aae1-61f6020c7363.gif)
+![basic-grid](https://user-images.githubusercontent.com/11002/131060974-3e53fa40-324d-4301-b761-53cf5fcb0b6f.gif)
 
 ## Part 1: Percolation
 The grid above is a simplified system for this problem. Each square represents a site. Closed sites are black and the system begins with all sites closed. Once a site is opened (with a simple click) it turns light gray unless it is connected to the top row, then it is considered full and turns blue.  It's full because if you were to poor fluid in from the top it would reach all sites directly connected to the top. Any opened site that is not connected to the top, remains gray. A system is said to **percolate** when there is any full site on the bottom row. This means that fluid or current can travel all the way from the top to bottom.
@@ -28,20 +28,20 @@ When we need to determine if an entity is connected to another, we used the `fin
 ### Percolation
 This brings us back to percolation. To determine if a system percolates we simply check all the sites in the top row and see if they are connected to any site in the bottom row. To make this faster and more efficient, this implementation adds a virtual top site. Think of this like a single (not shown) site in row 0 that is connected to all the open sites in row 1. When checking if the system percolates, we simply check if  `find` returns the same entity for the virtual top and any site in the bottom row.
 
-Here are some examples of randomly generated percolating systems and their corresponding full sites:
-![sample-trials2](https://user-images.githubusercontent.com/11002/130983976-efee39a9-66d6-4236-a7fc-387223289ac2.gif)
+Here are some examples of randomly generated percolating systems and their corresponding full sites in blue.
+![random-grids](https://user-images.githubusercontent.com/11002/131060990-9e1f40e9-8de7-4aef-ac9e-be861ed46336.gif)
 
 
 ## Part 2: Shortest Path
 Now let's consider the second question: What is the shortest path from any top site to any bottom site? Answering this question is quite a bit more demanding than percolation. We can't just ignore degrees of separation now, we have to track each possible path from all open sites. In this implementation, we start at the bottom and work up to the top, but there's no reason you couldn't do the inverse.
 
 ### Depth First Search
-There are two main types of searching in a system like this. You can focus on breadth first or depth first. To focus on breadth first means that for each site with multiple branches (up, down, left & right) you would search each of those adjascent sites before searching their adjascent sites. A depth first search is the opposite and usually favors one direction. In this case, we favor upward movement above lateral or backward movement. If we reach the end of a route and haven't reached the top we backtrack until we get back to a branch and we then try another branch.
+There are two main types of searching in a system like this. Breadth first or depth first. Breadth first means that for each site with multiple branches (as many as three if you don't count the previous site) you would search each of those adjascent sites before searching any of their adjascent sites. A depth first search is the opposite and usually favors one direction. In this case, we favor upward movement above lateral or backward movement. If we reach the end of a route and haven't reached the top we backtrack until we get back to a branch and we then try another branch.
 
-You could answer the problem of percolation with a depth first search, but it would be a very inefficient way to simply answer the question of whether or not the system percolates. In this project, I've implemented the union-find data structure/agorithm until the system percolates and once it does, it leverages a depth first search to find the shortest path. Shortest paths are highlighted in green.
+You could answer the problem of percolation in part 1 with a depth first search, but it would be a very inefficient way to simply answer the question of whether or not the system percolates. In this project, I've implemented the union-find data structure/agorithm until the system percolates and once it does, it leverages a depth first search to find the shortest path. Shortest paths are highlighted in green.
 
-Here are some examples of randomly generated percolating systems and their corresponding shortest paths:
-![sample-trials](https://user-images.githubusercontent.com/11002/130983801-0e0e443b-87f5-4a70-90a0-3162f0b268ec.gif)
+Here are some examples of randomly generated percolating systems and their corresponding shortest paths in green.
+![random-grids-with-path](https://user-images.githubusercontent.com/11002/131061003-5f7c68d6-713c-48de-a4b3-be226927f9f5.gif)
 
 
 
