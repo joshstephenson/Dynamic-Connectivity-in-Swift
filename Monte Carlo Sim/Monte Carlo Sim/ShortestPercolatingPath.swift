@@ -9,11 +9,13 @@ import Foundation
 
 class ShortestPercolatingPath {
     private var gridModel: GridModel
+    private var depthFirst = true
     private var grid:PercolatingGrid {
         return gridModel.grid
     }
     
-    init(_ gridModel: GridModel) {
+    init(_ gridModel: GridModel, depthFirst: Bool) {
+        self.depthFirst = depthFirst
         self.gridModel = gridModel
     }
     
@@ -27,20 +29,9 @@ class ShortestPercolatingPath {
         }
         var best:[Site] = []
         // start a depth first search towards the top from each full site on the bottom
-        gridModel.rows.last?.forEach { site in
-            if grid.isFull(row: site.row, col: site.col) {
-                let dfs = DepthFirstSearch(gridModel)
-                let path = dfs.run([site])
-                
-                // make sure the search reaches the top
-                if path.last?.row == 1 {
-                    if best.count == 0 || path.count < best.count {
-                        best = path
-                    }
-                }
-                
-            }
-        }
+        
+        let search:Search = depthFirst ? DepthFirstSearch(gridModel) : BreadthFirstSearch(gridModel)
+        best = search.solution()
         return best
     }
     

@@ -32,7 +32,7 @@ struct Simulator {
             let margin = confidence * standardDeviation / Double(numTrials).squareRoot()
             let confidenceLo = mean - margin
             let confidenceHigh = mean + margin
-            let resultString = """
+            let _ = """
                 
                 \tTrials: \(results.count), Grid Size: \(gridSize)
 

@@ -60,10 +60,9 @@ struct ContentView: View {
                     if gridModel.showShortestPath {
                         Picker("Algorithm", selection: $gridModel.searchMethod) {
                             Text("Depth First").tag(SearchMethod.depthFirstSearch)
+                            Text("Breadth First").tag(SearchMethod.breadthFirstSearch)
                             Text("A* Search").tag(SearchMethod.aStarSearch)
-                        }.onChange(of: gridModel.searchMethod, perform: { value in
-                            print("changed")
-                        }).frame(width:200.0)
+                        }.frame(width:200.0)
                     }
                 }.frame(width:200.0)
                 VStack(alignment: .leading, spacing: 10.0) {

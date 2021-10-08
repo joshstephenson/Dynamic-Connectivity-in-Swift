@@ -9,7 +9,8 @@ import Foundation
 
 enum SearchMethod:Int {
     case depthFirstSearch = 0
-    case aStarSearch = 1
+    case breadthFirstSearch = 1
+    case aStarSearch = 2
 }
 
 class GridModel: ObservableObject {
@@ -112,11 +113,12 @@ class GridModel: ObservableObject {
     
     private func findShortestPath(_ searchMethod: SearchMethod) {
         var path:[Site] = []
-        if (searchMethod == .aStarSearch) {
-            let astar = AStarPathFinder(grid: self)
-            path = astar.solution()
+        if (searchMethod == .depthFirstSearch) {
+            path = ShortestPercolatingPath(self, depthFirst: true).path()
+        }else if (searchMethod == .breadthFirstSearch) {
+            path = ShortestPercolatingPath(self, depthFirst: false).path()
         }else {
-            path = ShortestPercolatingPath(self).path()
+            path = AStarSearch(grid: self).solution()
         }
         // reset any older shortest path
         shortestPath.forEach { site in

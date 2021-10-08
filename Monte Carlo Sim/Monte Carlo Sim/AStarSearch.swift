@@ -7,37 +7,11 @@
 
 import Foundation
 
-struct SearchNode: Comparable, Equatable {
-    
-    var priority: Int
-    var isSolved: Bool = false
-    var grid: GridModel
-    var path: [Site]
-    var previous: Site?
-    
-    init(grid: GridModel, path: [Site], previous: Site?) {
-        self.grid = grid
-        self.path = path
-        self.previous = previous
-        self.priority = path.count + path.last!.row
-        self.isSolved = path.last!.row == 1
-    }
-    
-    static func < (lhs: SearchNode, rhs: SearchNode) -> Bool {
-        return lhs.priority < rhs.priority
-    }
-    
-    static func == (lhs: SearchNode, rhs: SearchNode) -> Bool {
-        return lhs.priority == rhs.priority
-    }
-    
-}
-
-struct AStarPathFinder {
-    private var path: [Site]
+class AStarSearch: Search {
     
     init(grid: GridModel) {
-        self.path = []
+        super.init(grid)
+        self.marked = Array(repeating: false, count: grid.gridSize * grid.gridSize)
         var minPQ = MinimumPriorityQueue<SearchNode>()
         grid.rows.last?.forEach { site in
             if site.isFull {
@@ -48,7 +22,8 @@ struct AStarPathFinder {
         while !minPQ.isEmpty() && !minPQ.min()!.isSolved {
             if let node = minPQ.delMin() {
                 for site in node.grid.fullAdjascentSites(site: node.path.last!) {
-                    if node.previous == nil || site != node.previous! {
+                    if !marked[Search.siteIndexFor(grid.gridSize, site: site)] && (node.previous == nil || site != node.previous!) {
+                        marked[Search.siteIndexFor(grid.gridSize, site: site)] = true
                         let newNode = SearchNode(grid: grid, path: node.path.appending(site), previous: site)
                         minPQ.insert(newNode)
                     }
@@ -59,9 +34,5 @@ struct AStarPathFinder {
         if let node = minPQ.delMin() {
             self.path = node.path
         }
-    }
-    
-    func solution() -> [Site] {
-        return path
     }
 }

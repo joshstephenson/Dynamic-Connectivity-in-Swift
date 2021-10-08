@@ -27,7 +27,7 @@ class Site:ObservableObject, Hashable, CustomStringConvertible {
     public var below:Site?
     
     var description: String {
-        return "<Site row: \(row), col: \(col), state: \(state)>"
+        return "(Site| row: \(row), col: \(col), state: \(state))"
     }
     
     public var isOpen:Bool {

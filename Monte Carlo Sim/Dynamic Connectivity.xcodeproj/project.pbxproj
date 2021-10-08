@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		426D31F32710B8C60014A5DA /* BreadthFirstSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426D31F22710B8C60014A5DA /* BreadthFirstSearch.swift */; };
+		426D31F42710B8C60014A5DA /* BreadthFirstSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426D31F22710B8C60014A5DA /* BreadthFirstSearch.swift */; };
+		426D31F62710E0DD0014A5DA /* DepthFirstSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426D31F52710E0DD0014A5DA /* DepthFirstSearch.swift */; };
+		426D31F72710E0DD0014A5DA /* DepthFirstSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426D31F52710E0DD0014A5DA /* DepthFirstSearch.swift */; };
+		426D31F92710E0F60014A5DA /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426D31F82710E0F60014A5DA /* Search.swift */; };
+		426D31FA2710E0F60014A5DA /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426D31F82710E0F60014A5DA /* Search.swift */; };
 		427AA150270FAC0D00DDA827 /* MinimumPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AA14F270FAC0D00DDA827 /* MinimumPriorityQueue.swift */; };
 		427AA151270FAC0D00DDA827 /* MinimumPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AA14F270FAC0D00DDA827 /* MinimumPriorityQueue.swift */; };
 		427AA152270FAC0D00DDA827 /* MinimumPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AA14F270FAC0D00DDA827 /* MinimumPriorityQueue.swift */; };
-		427AA154270FACC700DDA827 /* AStarPathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AA153270FACC700DDA827 /* AStarPathFinder.swift */; };
-		427AA155270FACC700DDA827 /* AStarPathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AA153270FACC700DDA827 /* AStarPathFinder.swift */; };
-		427AA156270FACC700DDA827 /* AStarPathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AA153270FACC700DDA827 /* AStarPathFinder.swift */; };
+		427AA154270FACC700DDA827 /* AStarSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AA153270FACC700DDA827 /* AStarSearch.swift */; };
+		427AA155270FACC700DDA827 /* AStarSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AA153270FACC700DDA827 /* AStarSearch.swift */; };
+		427AA156270FACC700DDA827 /* AStarSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AA153270FACC700DDA827 /* AStarSearch.swift */; };
 		427F3A2F26D02AB400F629A4 /* GridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A2E26D02AB400F629A4 /* GridModel.swift */; };
 		427F3A3126D02CA600F629A4 /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3026D02CA600F629A4 /* Site.swift */; };
 		427F3A3326D02DB500F629A4 /* SiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3226D02DB500F629A4 /* SiteView.swift */; };
 		427F3A3526D02DCA00F629A4 /* PercolationGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3426D02DCA00F629A4 /* PercolationGridView.swift */; };
 		427F3A3726D03BD600F629A4 /* SimulationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3626D03BD600F629A4 /* SimulationConfig.swift */; };
 		427F3A3926D03DBE00F629A4 /* SimulationConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3826D03DBE00F629A4 /* SimulationConfigView.swift */; };
-		42B3763426D6EA3E00C9F183 /* DepthFirstSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B8D5EE26D6D8400031DFB7 /* DepthFirstSearch.swift */; };
+		42B3763426D6EA3E00C9F183 /* BacktrackingSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B8D5EE26D6D8400031DFB7 /* BacktrackingSearch.swift */; };
 		42B3837426D3EAD800691563 /* SimulationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3626D03BD600F629A4 /* SimulationConfig.swift */; };
 		42B3837526D3EADC00691563 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09A226C6ACC800BC3CDB /* ContentView.swift */; };
 		42B3837626D3EAE900691563 /* GridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A2E26D02AB400F629A4 /* GridModel.swift */; };
@@ -34,7 +40,7 @@
 		42B3838226D3ECB700691563 /* ShortestPercolatingPathTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B3838126D3ECB700691563 /* ShortestPercolatingPathTest.swift */; };
 		42B3838426D3F43E00691563 /* PathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B3838326D3F43E00691563 /* PathTests.swift */; };
 		42B3838626D4897500691563 /* SiteTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B3838526D4897500691563 /* SiteTest.swift */; };
-		42B8D5EF26D6D8400031DFB7 /* DepthFirstSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B8D5EE26D6D8400031DFB7 /* DepthFirstSearch.swift */; };
+		42B8D5EF26D6D8400031DFB7 /* BacktrackingSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B8D5EE26D6D8400031DFB7 /* BacktrackingSearch.swift */; };
 		42EF09A126C6ACC800BC3CDB /* Monte_Carlo_SimApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09A026C6ACC800BC3CDB /* Monte_Carlo_SimApp.swift */; };
 		42EF09A326C6ACC800BC3CDB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF09A226C6ACC800BC3CDB /* ContentView.swift */; };
 		42EF09A526C6ACCA00BC3CDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42EF09A426C6ACCA00BC3CDB /* Assets.xcassets */; };
@@ -66,8 +72,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		426D31F22710B8C60014A5DA /* BreadthFirstSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreadthFirstSearch.swift; sourceTree = "<group>"; };
+		426D31F52710E0DD0014A5DA /* DepthFirstSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthFirstSearch.swift; sourceTree = "<group>"; };
+		426D31F82710E0F60014A5DA /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		427AA14F270FAC0D00DDA827 /* MinimumPriorityQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimumPriorityQueue.swift; sourceTree = "<group>"; };
-		427AA153270FACC700DDA827 /* AStarPathFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarPathFinder.swift; sourceTree = "<group>"; };
+		427AA153270FACC700DDA827 /* AStarSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarSearch.swift; sourceTree = "<group>"; };
 		427F3A2E26D02AB400F629A4 /* GridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridModel.swift; sourceTree = "<group>"; };
 		427F3A3026D02CA600F629A4 /* Site.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Site.swift; sourceTree = "<group>"; };
 		427F3A3226D02DB500F629A4 /* SiteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteView.swift; sourceTree = "<group>"; };
@@ -79,7 +88,7 @@
 		42B3838126D3ECB700691563 /* ShortestPercolatingPathTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortestPercolatingPathTest.swift; sourceTree = "<group>"; };
 		42B3838326D3F43E00691563 /* PathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathTests.swift; sourceTree = "<group>"; };
 		42B3838526D4897500691563 /* SiteTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteTest.swift; sourceTree = "<group>"; };
-		42B8D5EE26D6D8400031DFB7 /* DepthFirstSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthFirstSearch.swift; sourceTree = "<group>"; };
+		42B8D5EE26D6D8400031DFB7 /* BacktrackingSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacktrackingSearch.swift; sourceTree = "<group>"; };
 		42EF099D26C6ACC800BC3CDB /* Dynamic Connectivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dynamic Connectivity.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EF09A026C6ACC800BC3CDB /* Monte_Carlo_SimApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monte_Carlo_SimApp.swift; sourceTree = "<group>"; };
 		42EF09A226C6ACC800BC3CDB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -159,12 +168,15 @@
 				427F3A3226D02DB500F629A4 /* SiteView.swift */,
 				42EF09D126C814DD00BC3CDB /* Simulator.swift */,
 				42B3837E26D3EC9500691563 /* ShortestPercolatingPath.swift */,
-				42B8D5EE26D6D8400031DFB7 /* DepthFirstSearch.swift */,
+				42B8D5EE26D6D8400031DFB7 /* BacktrackingSearch.swift */,
+				427AA153270FACC700DDA827 /* AStarSearch.swift */,
+				426D31F52710E0DD0014A5DA /* DepthFirstSearch.swift */,
+				426D31F22710B8C60014A5DA /* BreadthFirstSearch.swift */,
+				426D31F82710E0F60014A5DA /* Search.swift */,
 				42EF09A426C6ACCA00BC3CDB /* Assets.xcassets */,
 				42EF09A926C6ACCA00BC3CDB /* Info.plist */,
 				42EF09AA26C6ACCA00BC3CDB /* Monte_Carlo_Sim.entitlements */,
 				42EF09A626C6ACCA00BC3CDB /* Preview Content */,
-				427AA153270FACC700DDA827 /* AStarPathFinder.swift */,
 			);
 			path = "Monte Carlo Sim";
 			sourceTree = "<group>";
@@ -329,7 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				427AA150270FAC0D00DDA827 /* MinimumPriorityQueue.swift in Sources */,
-				42B8D5EF26D6D8400031DFB7 /* DepthFirstSearch.swift in Sources */,
+				42B8D5EF26D6D8400031DFB7 /* BacktrackingSearch.swift in Sources */,
 				427F3A3126D02CA600F629A4 /* Site.swift in Sources */,
 				427F3A3926D03DBE00F629A4 /* SimulationConfigView.swift in Sources */,
 				427F3A3326D02DB500F629A4 /* SiteView.swift in Sources */,
@@ -337,9 +349,12 @@
 				42EF09A326C6ACC800BC3CDB /* ContentView.swift in Sources */,
 				42EF09D226C814DD00BC3CDB /* Simulator.swift in Sources */,
 				427F3A3526D02DCA00F629A4 /* PercolationGridView.swift in Sources */,
+				426D31F92710E0F60014A5DA /* Search.swift in Sources */,
 				427F3A3726D03BD600F629A4 /* SimulationConfig.swift in Sources */,
-				427AA154270FACC700DDA827 /* AStarPathFinder.swift in Sources */,
+				427AA154270FACC700DDA827 /* AStarSearch.swift in Sources */,
+				426D31F32710B8C60014A5DA /* BreadthFirstSearch.swift in Sources */,
 				42EF09A126C6ACC800BC3CDB /* Monte_Carlo_SimApp.swift in Sources */,
+				426D31F62710E0DD0014A5DA /* DepthFirstSearch.swift in Sources */,
 				42B3837F26D3EC9500691563 /* ShortestPercolatingPath.swift in Sources */,
 				42EF09CD26C6AD7C00BC3CDB /* PercolatingGrid.swift in Sources */,
 				427F3A2F26D02AB400F629A4 /* GridModel.swift in Sources */,
@@ -357,16 +372,19 @@
 				42B3837A26D3EB0200691563 /* SimulationConfigView.swift in Sources */,
 				42B3838226D3ECB700691563 /* ShortestPercolatingPathTest.swift in Sources */,
 				427AA151270FAC0D00DDA827 /* MinimumPriorityQueue.swift in Sources */,
+				426D31F42710B8C60014A5DA /* BreadthFirstSearch.swift in Sources */,
 				42B3838426D3F43E00691563 /* PathTests.swift in Sources */,
 				42B3837926D3EAFF00691563 /* PercolationGridView.swift in Sources */,
 				42B3837D26D3EB7C00691563 /* PercolatingGridTests.swift in Sources */,
+				426D31FA2710E0F60014A5DA /* Search.swift in Sources */,
 				42EF09D026C6ADA400BC3CDB /* QuickUnionFind.swift in Sources */,
 				42EF09D326C814DD00BC3CDB /* Simulator.swift in Sources */,
 				42B3837726D3EAEC00691563 /* PercolatingGrid.swift in Sources */,
 				42B3838026D3EC9500691563 /* ShortestPercolatingPath.swift in Sources */,
-				42B3763426D6EA3E00C9F183 /* DepthFirstSearch.swift in Sources */,
+				426D31F72710E0DD0014A5DA /* DepthFirstSearch.swift in Sources */,
+				42B3763426D6EA3E00C9F183 /* BacktrackingSearch.swift in Sources */,
 				42EF09B426C6ACCA00BC3CDB /* Monte_Carlo_SimTests.swift in Sources */,
-				427AA155270FACC700DDA827 /* AStarPathFinder.swift in Sources */,
+				427AA155270FACC700DDA827 /* AStarSearch.swift in Sources */,
 				42B3838626D4897500691563 /* SiteTest.swift in Sources */,
 				42B3837626D3EAE900691563 /* GridModel.swift in Sources */,
 			);
@@ -377,7 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				427AA152270FAC0D00DDA827 /* MinimumPriorityQueue.swift in Sources */,
-				427AA156270FACC700DDA827 /* AStarPathFinder.swift in Sources */,
+				427AA156270FACC700DDA827 /* AStarSearch.swift in Sources */,
 				42EF09BF26C6ACCA00BC3CDB /* Monte_Carlo_SimUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
