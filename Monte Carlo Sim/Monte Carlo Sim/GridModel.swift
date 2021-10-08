@@ -24,17 +24,17 @@ class GridModel: ObservableObject {
     public var grid: PercolatingGrid
     private var shortestPath:[Site] = []
     @Published var showShortestPath = false
-    @Published var aStarSearch = false {
+    @Published var searchMethod:SearchMethod = .depthFirstSearch {
         didSet {
             if percolates {
-                findShortestPath(aStarSearch ? .aStarSearch : .depthFirstSearch)
+                findShortestPath(searchMethod)
             }
         }
     }
     @Published var percolates: Bool = false {
         didSet {
             if percolates {
-                findShortestPath(aStarSearch ? .aStarSearch : .depthFirstSearch)
+                findShortestPath(searchMethod)
             }
         }
     }

@@ -47,18 +47,27 @@ struct ContentView: View {
     @State var threshold = 0.0
     var simulator = Simulator()
     var body: some View {
-        VStack(alignment: .leading, spacing: 10.0) {
-            HStack(alignment: .top, spacing: 90.0, content: {
-                HStack(alignment: .top, spacing: 10.0) {
+        VStack(alignment: .center, spacing: 10.0) {
+            HStack(alignment: .center, spacing: 10.0, content: {
+                VStack(alignment: .leading, spacing: 10.0) {
                     GridSizeStepperView(gridModel: gridModel) {
                         self.threshold = 0.0
                     }
-                    Toggle("Highlight shortest path", isOn: $gridModel.showShortestPath)
                 }
-                HStack(alignment: .top, spacing: 20.0) {
-                    Button(gridModel.aStarSearch ? "DFS Search" : "A* Search") {
-                        gridModel.aStarSearch = !gridModel.aStarSearch
+                Spacer()
+                VStack(alignment: .leading, spacing: 10.0) {
+                    Toggle("Highlight shortest path", isOn: $gridModel.showShortestPath)
+                    if gridModel.showShortestPath {
+                        Picker("Algorithm", selection: $gridModel.searchMethod) {
+                            Text("Depth First").tag(SearchMethod.depthFirstSearch)
+                            Text("A* Search").tag(SearchMethod.aStarSearch)
+                        }.onChange(of: gridModel.searchMethod, perform: { value in
+                            print("changed")
+                        }).frame(width:200.0)
                     }
+                }.frame(width:200.0)
+                VStack(alignment: .leading, spacing: 10.0) {
+                    
                     Button("Reset") {
                         threshold = 0.0
                         gridModel.reset()
@@ -67,9 +76,13 @@ struct ContentView: View {
                     Button("Randomize") {
                         threshold = simulator.run(config: simulationConfig, gridModel: gridModel)
                     }
-                }
-            })
-            
+                }.frame(width:200)
+            }).padding(EdgeInsets(top: 0.0, leading: 10.0, bottom: 0.0, trailing: 10.0))
+            Spacer()
+            Rectangle()
+                .fill(Color("separator"))
+                .frame(width: 580, height: 1.0, alignment: .center)
+                
             VStack(alignment: .center, spacing: nil) {
                 
                     if threshold > 0.0 {
@@ -79,7 +92,7 @@ struct ContentView: View {
                         Text(gridModel.percolates ? "System percolates" : "System does not percolate").font(.body)
                     }
                 
-            }.frame(width: 600, height: 10, alignment: .center)
+            }.frame(width: 600, height: 30, alignment: .center)
             PercolationGridView(gridModel: gridModel)
         }.padding(EdgeInsets(top: 20.0, leading: 10.0, bottom: 20.0, trailing: 10.0))
     }
