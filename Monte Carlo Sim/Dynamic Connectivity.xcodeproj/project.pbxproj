@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		427AA150270FAC0D00DDA827 /* MinimumPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AA14F270FAC0D00DDA827 /* MinimumPriorityQueue.swift */; };
+		427AA151270FAC0D00DDA827 /* MinimumPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AA14F270FAC0D00DDA827 /* MinimumPriorityQueue.swift */; };
+		427AA152270FAC0D00DDA827 /* MinimumPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AA14F270FAC0D00DDA827 /* MinimumPriorityQueue.swift */; };
+		427AA154270FACC700DDA827 /* AStarPathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AA153270FACC700DDA827 /* AStarPathFinder.swift */; };
+		427AA155270FACC700DDA827 /* AStarPathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AA153270FACC700DDA827 /* AStarPathFinder.swift */; };
+		427AA156270FACC700DDA827 /* AStarPathFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427AA153270FACC700DDA827 /* AStarPathFinder.swift */; };
 		427F3A2F26D02AB400F629A4 /* GridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A2E26D02AB400F629A4 /* GridModel.swift */; };
 		427F3A3126D02CA600F629A4 /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3026D02CA600F629A4 /* Site.swift */; };
 		427F3A3326D02DB500F629A4 /* SiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F3A3226D02DB500F629A4 /* SiteView.swift */; };
@@ -60,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		427AA14F270FAC0D00DDA827 /* MinimumPriorityQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinimumPriorityQueue.swift; sourceTree = "<group>"; };
+		427AA153270FACC700DDA827 /* AStarPathFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarPathFinder.swift; sourceTree = "<group>"; };
 		427F3A2E26D02AB400F629A4 /* GridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridModel.swift; sourceTree = "<group>"; };
 		427F3A3026D02CA600F629A4 /* Site.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Site.swift; sourceTree = "<group>"; };
 		427F3A3226D02DB500F629A4 /* SiteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiteView.swift; sourceTree = "<group>"; };
@@ -147,6 +155,7 @@
 				42EF09CC26C6AD7C00BC3CDB /* PercolatingGrid.swift */,
 				42EF09CE26C6ADA400BC3CDB /* QuickUnionFind.swift */,
 				427F3A3026D02CA600F629A4 /* Site.swift */,
+				427AA14F270FAC0D00DDA827 /* MinimumPriorityQueue.swift */,
 				427F3A3226D02DB500F629A4 /* SiteView.swift */,
 				42EF09D126C814DD00BC3CDB /* Simulator.swift */,
 				42B3837E26D3EC9500691563 /* ShortestPercolatingPath.swift */,
@@ -155,6 +164,7 @@
 				42EF09A926C6ACCA00BC3CDB /* Info.plist */,
 				42EF09AA26C6ACCA00BC3CDB /* Monte_Carlo_Sim.entitlements */,
 				42EF09A626C6ACCA00BC3CDB /* Preview Content */,
+				427AA153270FACC700DDA827 /* AStarPathFinder.swift */,
 			);
 			path = "Monte Carlo Sim";
 			sourceTree = "<group>";
@@ -318,6 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				427AA150270FAC0D00DDA827 /* MinimumPriorityQueue.swift in Sources */,
 				42B8D5EF26D6D8400031DFB7 /* DepthFirstSearch.swift in Sources */,
 				427F3A3126D02CA600F629A4 /* Site.swift in Sources */,
 				427F3A3926D03DBE00F629A4 /* SimulationConfigView.swift in Sources */,
@@ -327,6 +338,7 @@
 				42EF09D226C814DD00BC3CDB /* Simulator.swift in Sources */,
 				427F3A3526D02DCA00F629A4 /* PercolationGridView.swift in Sources */,
 				427F3A3726D03BD600F629A4 /* SimulationConfig.swift in Sources */,
+				427AA154270FACC700DDA827 /* AStarPathFinder.swift in Sources */,
 				42EF09A126C6ACC800BC3CDB /* Monte_Carlo_SimApp.swift in Sources */,
 				42B3837F26D3EC9500691563 /* ShortestPercolatingPath.swift in Sources */,
 				42EF09CD26C6AD7C00BC3CDB /* PercolatingGrid.swift in Sources */,
@@ -344,6 +356,7 @@
 				42B3837B26D3EB0A00691563 /* SiteView.swift in Sources */,
 				42B3837A26D3EB0200691563 /* SimulationConfigView.swift in Sources */,
 				42B3838226D3ECB700691563 /* ShortestPercolatingPathTest.swift in Sources */,
+				427AA151270FAC0D00DDA827 /* MinimumPriorityQueue.swift in Sources */,
 				42B3838426D3F43E00691563 /* PathTests.swift in Sources */,
 				42B3837926D3EAFF00691563 /* PercolationGridView.swift in Sources */,
 				42B3837D26D3EB7C00691563 /* PercolatingGridTests.swift in Sources */,
@@ -353,6 +366,7 @@
 				42B3838026D3EC9500691563 /* ShortestPercolatingPath.swift in Sources */,
 				42B3763426D6EA3E00C9F183 /* DepthFirstSearch.swift in Sources */,
 				42EF09B426C6ACCA00BC3CDB /* Monte_Carlo_SimTests.swift in Sources */,
+				427AA155270FACC700DDA827 /* AStarPathFinder.swift in Sources */,
 				42B3838626D4897500691563 /* SiteTest.swift in Sources */,
 				42B3837626D3EAE900691563 /* GridModel.swift in Sources */,
 			);
@@ -362,6 +376,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				427AA152270FAC0D00DDA827 /* MinimumPriorityQueue.swift in Sources */,
+				427AA156270FACC700DDA827 /* AStarPathFinder.swift in Sources */,
 				42EF09BF26C6ACCA00BC3CDB /* Monte_Carlo_SimUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

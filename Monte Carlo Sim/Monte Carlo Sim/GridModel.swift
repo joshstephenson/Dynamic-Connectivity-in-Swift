@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum SearchMethod:Int {
+    case depthFirstSearch = 0
+    case aStarSearch = 1
+}
 
 class GridModel: ObservableObject {
     let identifier = UUID()
@@ -23,7 +27,7 @@ class GridModel: ObservableObject {
     @Published var percolates: Bool = false {
         didSet {
             if percolates {
-                findShortestPath()
+                findShortestPath(.aStarSearch)
             }
         }
     }
@@ -79,14 +83,39 @@ class GridModel: ObservableObject {
         }
     }
     
-    private func findShortestPath() {
-        let path = ShortestPercolatingPath(self).path()
-        
+    func fullAdjascentSites(site: Site) -> [Site] {
+        // optimization to avoid checking cells right/left of
+        if site.row == gridSize { // last row
+            if let above = site.above {
+                if above.isFull {
+                    return [above]
+                }
+            }
+            return []
+        }
+        return [site.above, site.left, site.right, site.below].compactMap { site in
+            if let site = site {
+                if site.isFull {
+                    return site
+                }
+            }
+            return nil
+        }
+    }
+    
+    private func findShortestPath(_ searchMethod: SearchMethod) {
+        var path:[Site] = []
+        if (searchMethod == .aStarSearch) {
+            let astar = AStarPathFinder(grid: self)
+            path = astar.solution()
+        }else {
+            path = ShortestPercolatingPath(self).path()
+        }
         // reset any older shortest path
         shortestPath.forEach { site in
             site.state = .full
         }
-        path.forEach { site in
+        for site in path {
             site.state = .shortestPath
         }
         self.shortestPath = path
