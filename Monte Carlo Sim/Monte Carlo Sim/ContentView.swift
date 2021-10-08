@@ -48,7 +48,7 @@ struct ContentView: View {
     var simulator = Simulator()
     var body: some View {
         VStack(alignment: .leading, spacing: 10.0) {
-            HStack(alignment: .top, spacing: 177.0, content: {
+            HStack(alignment: .top, spacing: 90.0, content: {
                 HStack(alignment: .top, spacing: 10.0) {
                     GridSizeStepperView(gridModel: gridModel) {
                         self.threshold = 0.0
@@ -56,6 +56,9 @@ struct ContentView: View {
                     Toggle("Highlight shortest path", isOn: $gridModel.showShortestPath)
                 }
                 HStack(alignment: .top, spacing: 20.0) {
+                    Button(gridModel.aStarSearch ? "DFS Search" : "A* Search") {
+                        gridModel.aStarSearch = !gridModel.aStarSearch
+                    }
                     Button("Reset") {
                         threshold = 0.0
                         gridModel.reset()
